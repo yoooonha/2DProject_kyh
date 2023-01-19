@@ -33,7 +33,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 0
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -18436,16 +18436,16 @@ TextureImporter:
       PokemonLike_581: 229027562
       PokemonLike_585: -354324283
       PokemonLike_383: 1096846547
+      PokemonLike_817: 1402997061
       PokemonLike_189: -1371028829
       PokemonLike_616: 1763607273
       PokemonLike_430: -1494572817
-      PokemonLike_817: 1402997061
       PokemonLike_568: -1495714407
-      PokemonLike_689: -738240799
       PokemonLike_842: 561938878
       PokemonLike_509: 670012600
       PokemonLike_353: 1745909970
       PokemonLike_368: 1923569107
+      PokemonLike_689: -738240799
       PokemonLike_771: -539501624
       PokemonLike_195: 820654381
       PokemonLike_124: 1121915706
@@ -18492,11 +18492,11 @@ TextureImporter:
       PokemonLike_780: 1531290413
       PokemonLike_687: -696175511
       PokemonLike_534: -1042503574
-      PokemonLike_145: -1764647344
       PokemonLike_197: 1474747484
       PokemonLike_479: 339055155
-      PokemonLike_345: 279103732
       PokemonLike_536: 1168328756
+      PokemonLike_345: 279103732
+      PokemonLike_145: -1764647344
       PokemonLike_722: 584807595
       PokemonLike_765: 1239480348
       PokemonLike_617: 207293342
@@ -18602,9 +18602,9 @@ TextureImporter:
       PokemonLike_62: -1405222337
       PokemonLike_297: 1248785954
       PokemonLike_18: 797729807
-      PokemonLike_611: 31396247
       PokemonLike_667: -2081377116
       PokemonLike_668: 1015751366
+      PokemonLike_611: 31396247
       PokemonLike_822: -1410880456
       PokemonLike_851: -1491160413
       PokemonLike_425: -349420609
@@ -18627,8 +18627,8 @@ TextureImporter:
       PokemonLike_80: -684195725
       PokemonLike_539: 429309413
       PokemonLike_129: 629938956
-      PokemonLike_603: -822126276
       PokemonLike_566: 2051448842
+      PokemonLike_603: -822126276
       PokemonLike_102: 638744591
       PokemonLike_314: 327021212
       PokemonLike_615: -203165238
@@ -18650,10 +18650,10 @@ TextureImporter:
       PokemonLike_634: -905084534
       PokemonLike_835: 2093631679
       PokemonLike_591: -846592593
+      PokemonLike_745: 2041384449
       PokemonLike_675: -444142864
       PokemonLike_163: -718603771
       PokemonLike_1: -399848318
-      PokemonLike_745: 2041384449
       PokemonLike_618: 1968293106
       PokemonLike_628: 1237789345
       PokemonLike_836: -1179567737
@@ -18667,8 +18667,8 @@ TextureImporter:
       PokemonLike_486: 306939631
       PokemonLike_490: -2095374937
       PokemonLike_550: 348957904
-      PokemonLike_416: 1973078177
       PokemonLike_735: -1702119366
+      PokemonLike_416: 1973078177
       PokemonLike_244: 5915934
       PokemonLike_784: 574599285
       PokemonLike_794: 1936976778
@@ -18679,13 +18679,13 @@ TextureImporter:
       PokemonLike_513: 1398829235
       PokemonLike_385: -1379231068
       PokemonLike_43: 997626175
-      PokemonLike_157: -1316880190
       PokemonLike_570: 1031855744
       PokemonLike_728: -2122339606
       PokemonLike_359: -306176111
       PokemonLike_514: -2066640205
       PokemonLike_321: -1978110050
       PokemonLike_595: 1558010120
+      PokemonLike_157: -1316880190
       PokemonLike_560: 697146196
       PokemonLike_680: -383461430
       PokemonLike_564: 427449938
@@ -18844,13 +18844,12 @@ TextureImporter:
       PokemonLike_295: -588087248
       PokemonLike_631: 2013383029
       PokemonLike_55: -1922831619
-      PokemonLike_78: -1202019484
+      PokemonLike_600: 453804332
       PokemonLike_483: 727576691
       PokemonLike_136: 46941784
-      PokemonLike_600: 453804332
       PokemonLike_333: 800531404
       PokemonLike_394: -1816590738
-      PokemonLike_506: 159295759
+      PokemonLike_78: -1202019484
       PokemonLike_91: -1823375378
       PokemonLike_740: 1583322323
       PokemonLike_26: -1484336484
@@ -18859,6 +18858,7 @@ TextureImporter:
       PokemonLike_422: 91057249
       PokemonLike_640: 719645705
       PokemonLike_320: 1422898680
+      PokemonLike_506: 159295759
       PokemonLike_370: -496299336
       PokemonLike_708: 62488710
       PokemonLike_48: -1493243870
@@ -18945,19 +18945,19 @@ TextureImporter:
       PokemonLike_574: 705897567
       PokemonLike_220: 979040347
       PokemonLike_578: 1771163760
-      PokemonLike_688: -1000290161
-      PokemonLike_249: -2064928955
       PokemonLike_806: -212077739
+      PokemonLike_249: -2064928955
+      PokemonLike_688: -1000290161
       PokemonLike_601: 1399874532
       PokemonLike_52: -345734660
       PokemonLike_217: 1387648252
       PokemonLike_70: -1856594015
       PokemonLike_77: 1080030683
-      PokemonLike_455: -1750124042
+      PokemonLike_511: -906384253
       PokemonLike_75: 378402442
       PokemonLike_193: -1530675323
+      PokemonLike_455: -1750124042
       PokemonLike_496: -447483801
-      PokemonLike_511: -906384253
       PokemonLike_855: -2060017508
       PokemonLike_387: 1007240925
       PokemonLike_789: -1698606873
@@ -18971,10 +18971,10 @@ TextureImporter:
       PokemonLike_471: 428806160
       PokemonLike_770: 432247212
       PokemonLike_277: -748229723
-      PokemonLike_278: -292273290
       PokemonLike_317: 465296845
-      PokemonLike_837: 1742506743
       PokemonLike_644: -691702688
+      PokemonLike_837: 1742506743
+      PokemonLike_278: -292273290
       PokemonLike_484: 493243969
       PokemonLike_684: -140536244
       PokemonLike_554: 539409604
@@ -18991,27 +18991,27 @@ TextureImporter:
       PokemonLike_150: -1997159621
       PokemonLike_74: -1727920030
       PokemonLike_182: -466718249
+      PokemonLike_257: -1618077429
       PokemonLike_63: 918830397
       PokemonLike_87: 1270553900
       PokemonLike_284: -948983626
       PokemonLike_329: 1632632881
-      PokemonLike_257: -1618077429
       PokemonLike_755: 9764826
       PokemonLike_390: 1158466776
       PokemonLike_741: -263918735
       PokemonLike_344: 130713804
-      PokemonLike_361: -1051481103
+      PokemonLike_753: -1858499043
       PokemonLike_849: 459783497
       PokemonLike_414: 491718272
-      PokemonLike_753: -1858499043
+      PokemonLike_361: -1051481103
       PokemonLike_93: 494957986
       PokemonLike_291: -1546645542
       PokemonLike_854: -1602617555
       PokemonLike_761: -1999527669
       PokemonLike_664: 1048068836
       PokemonLike_432: 856402021
-      PokemonLike_152: 669874928
       PokemonLike_859: -151642220
+      PokemonLike_152: 669874928
       PokemonLike_231: 491829936
       PokemonLike_766: -1755935581
       PokemonLike_538: 135521971
@@ -19027,8 +19027,8 @@ TextureImporter:
       PokemonLike_312: 1085817421
       PokemonLike_181: 523364417
       PokemonLike_456: -680205857
-      PokemonLike_45: 1704183766
       PokemonLike_693: -1167071462
+      PokemonLike_45: 1704183766
       PokemonLike_106: -1822041559
       PokemonLike_135: 560688400
       PokemonLike_502: -796423069
