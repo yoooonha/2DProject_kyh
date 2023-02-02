@@ -32,6 +32,11 @@ public class UIController : MonoBehaviour
         Debug.Log("OnPointerDown");
     }
 
+    public void OnOptionClick()
+    {
+        Debug.Log("On Option Click");
+    }
+
 
 }
 

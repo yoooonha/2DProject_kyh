@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     float v;
     Rigidbody2D rigid;
     Animator _ani;
+    
     //bool isIdle = true;
 
     // Start is called before the first frame update
@@ -22,10 +23,12 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        h = Input.GetAxisRaw("Horizontal");
-        v = Input.GetAxisRaw("Vertical");
-        rigid.velocity = new Vector2(h, v) * _speed;
-        
+         h = Input.GetAxisRaw("Horizontal");
+         v = Input.GetAxisRaw("Vertical");
+
+       // Vector2 hAxis 
+
+         rigid.velocity = new Vector2(h, v) * _speed;
         move();
 
     }
@@ -33,22 +36,31 @@ public class Player : MonoBehaviour
 
     void move()
     {
+      
+
+        Vector2 v2 = Vector2.zero;
         if(Input.GetKeyDown(KeyCode.RightArrow))
         {
             _ani.SetInteger("move", 1);
+            transform.Translate(Vector2.right * Time.deltaTime * _speed);
         }
         if(Input.GetKeyUp(KeyCode.RightArrow))
         {
             _ani.SetInteger("move", 2);
         }
+
+
         if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
             _ani.SetInteger("move", 3);
+            transform.Translate(Vector2.left* Time.deltaTime * _speed);
         }
         if(Input.GetKeyUp(KeyCode.LeftArrow))
         {
             _ani.SetInteger("move", 4);
         }
+
+
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             _ani.SetInteger("move", 5);
@@ -57,6 +69,8 @@ public class Player : MonoBehaviour
         {
             _ani.SetInteger("move", 6);
         }
+
+
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             _ani.SetInteger("move", 7);
