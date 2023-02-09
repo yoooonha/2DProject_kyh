@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\CurissVRCTools\SimpleCapture\Editor\SimpleCapture.cs" />
+    <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\Editor\ReadmeEditorBE3.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

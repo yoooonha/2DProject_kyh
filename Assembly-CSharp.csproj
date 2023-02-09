@@ -56,11 +56,11 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Acamedy\UI\OptionControll.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
-    <Compile Include="Assets\Scripts\Acamedy\UI\GameUi.cs" />
-    <Compile Include="Assets\Scripts\Acamedy\UI\Lobby.cs" />
-    <Compile Include="Assets\Scripts\Acamedy\UIText\UIController.cs" />
+    <Compile Include="Assets\UI pack\Scripts\FillValueNumber.cs" />
+    <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\ReadmeBE3.cs" />
+    <Compile Include="Assets\Scripts\Lobby_UI\Lobby.cs" />
+    <Compile Include="Assets\Scripts\DungeonDoor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -79,6 +79,7 @@
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
     <None Include="Assets\Png\Item\lpc-food-v1 (2)\lpc-food-v1\CREDITS-food.txt" />
+    <None Include="Assets\UI pack\Documentation.txt" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />

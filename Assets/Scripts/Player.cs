@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] float _speed;
-    float h;
-    float v;
+    
     Rigidbody2D rigid;
     Animator _ani;
     
@@ -23,12 +23,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         h = Input.GetAxisRaw("Horizontal");
-         v = Input.GetAxisRaw("Vertical");
+        
 
        // Vector2 hAxis 
 
-         rigid.velocity = new Vector2(h, v) * _speed;
+         
         move();
 
     }
@@ -39,18 +38,20 @@ public class Player : MonoBehaviour
       
 
         Vector2 v2 = Vector2.zero;
-        if(Input.GetKeyDown(KeyCode.RightArrow))
+
+        if(Input.GetKey(KeyCode.RightArrow))
         {
             _ani.SetInteger("move", 1);
             transform.Translate(Vector2.right * Time.deltaTime * _speed);
+            //v2 += Vector2.right * Time.deltaTime * _speed;
         }
-        if(Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.RightArrow))
         {
             _ani.SetInteger("move", 2);
         }
 
 
-        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        if(Input.GetKey(KeyCode.LeftArrow))
         {
             _ani.SetInteger("move", 3);
             transform.Translate(Vector2.left* Time.deltaTime * _speed);
@@ -61,9 +62,10 @@ public class Player : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow))
         {
             _ani.SetInteger("move", 5);
+            transform.Translate(Vector2.up* Time.deltaTime * _speed);
         }
         if(Input.GetKeyUp(KeyCode.UpArrow))
         {
@@ -71,15 +73,28 @@ public class Player : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow))
         {
             _ani.SetInteger("move", 7);
+            transform.Translate(Vector2.down * Time.deltaTime * _speed);
+
         }
-        if(Input.GetKeyUp(KeyCode.DownArrow))
+        if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             _ani.SetInteger("move", 0);
         }
 
 
     }
+
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag== "DungeonDoor")
+        {
+           
+            SceneManager.LoadScene("Dungeon");
+        }
+    }
+
+
 }
