@@ -56,10 +56,9 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Lobby_UI\Option.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\UI pack\Scripts\FillValueNumber.cs" />
-    <Compile Include="Assets\TopDown 2D RPG BE3\ReadMe\Scripts\ReadmeBE3.cs" />
-    <Compile Include="Assets\Scripts\Lobby_UI\Lobby.cs" />
     <Compile Include="Assets\Scripts\DungeonDoor.cs" />
   </ItemGroup>
   <ItemGroup>
