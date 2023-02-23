@@ -6,6 +6,8 @@ TagManager:
   tags:
   - DungeonDoor
   - Border
+  - HouseDoor1
+  - HouseDoor2
   layers:
   - Default
   - TransparentFX

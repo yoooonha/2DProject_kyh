@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Border")
         {
             SceneManager.LoadScene("Main");
-          
+            transform.position = new Vector3(2.5f, 1.5f, 0);
         }
 
 
