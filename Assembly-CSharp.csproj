@@ -59,7 +59,6 @@
     <Compile Include="Assets\Scripts\Lobby_UI\Option.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\UI pack\Scripts\FillValueNumber.cs" />
-    <Compile Include="Assets\Scripts\DungeonDoor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Png\Item\lpc-food-v2 (2)\lpc-food-v2\CREDITS-food.txt" />
