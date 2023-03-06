@@ -13,9 +13,14 @@ public class Player : MonoBehaviour
     Animator _ani;
 
     GameObject _border;
-    
+    GameObject _scanObject;
+    public GameManager manager;
+    //현재 바라보고 있는 방향 값을 가진 변수가 필요
+    Vector3 dirVec;
+
     //bool isIdle = true;
 
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,9 +32,11 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
+        
         move();
+
+
+        RayCast();
 
         if (Input.GetKeyUp(KeyCode.Escape))
         {
@@ -44,10 +51,32 @@ public class Player : MonoBehaviour
 
 
 
-
+     
     }
 
+    void RayCast()
+    {
+        //스캔할 수 있다
+        Debug.DrawRay(rigid.position, dirVec * 0.8f, new Color(0, 1, 0));
+        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.8f, LayerMask.GetMask("Object"));
 
+        if (rayHit.collider != null)
+        {
+            _scanObject = rayHit.collider.gameObject;
+        }
+        else
+        {
+            _scanObject = null;
+        }
+        if (Input.GetKey(KeyCode.Space)&&_scanObject!=null)
+        {
+            manager.Action(_scanObject);
+        }
+     
+        
+
+    }
+    
 
 
 
@@ -61,9 +90,11 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
+            //manager.isAction = false;
+            dirVec = Vector3.right;
             _ani.SetInteger("move", 1);
             transform.Translate(Vector2.right * Time.deltaTime * _speed);
-            //v2 += Vector2.right * Time.deltaTime * _speed;
+
         }
         if (Input.GetKeyUp(KeyCode.RightArrow))
         {
@@ -73,6 +104,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
+            dirVec = Vector3.left;
             _ani.SetInteger("move", 3);
             transform.Translate(Vector2.left * Time.deltaTime * _speed);
         }
@@ -84,6 +116,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
+            dirVec = Vector3.up;
             _ani.SetInteger("move", 5);
             transform.Translate(Vector2.up * Time.deltaTime * _speed);
         }
@@ -95,6 +128,8 @@ public class Player : MonoBehaviour
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
+            dirVec = Vector3.down;
+
             _ani.SetInteger("move", 7);
             transform.Translate(Vector2.down * Time.deltaTime * _speed);
 
@@ -118,6 +153,10 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Main");
             transform.position = new Vector3(2.5f, 1.5f, 0);
+        }
+        if(collision.gameObject.tag== "HouseDoor1")
+        {
+            SceneManager.LoadScene("House1");
         }
 
 
