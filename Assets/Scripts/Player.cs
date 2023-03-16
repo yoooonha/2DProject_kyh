@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
      
     }
 
-    void RayCast()
+   public void RayCast()
     {
         //스캔할 수 있다
         Debug.DrawRay(rigid.position, dirVec * 0.8f, new Color(0, 1, 0));
@@ -68,7 +68,7 @@ public class Player : MonoBehaviour
         {
             _scanObject = null;
         }
-        if (Input.GetKey(KeyCode.Space)&&_scanObject!=null)
+        if (Input.GetKeyDown(KeyCode.Space)&&_scanObject!=null)
         {
             manager.Action(_scanObject);
         }
@@ -151,6 +151,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.tag == "Border")
         {
+
             SceneManager.LoadScene("Main");
             transform.position = new Vector3(2.5f, 1.5f, 0);
         }

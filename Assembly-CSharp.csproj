@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{507FAE29-A6C7-0494-D8BF-3FFB8FD3101B}</ProjectGuid>
+    <ProjectGuid>{D2456625-635D-DBC6-0173-00F2E1888C48}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -59,11 +59,16 @@
     <Compile Include="Assets\Scripts\Lobby_UI\Option.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
+    <Compile Include="Assets\UI pack\Scripts\FillValueNumber.cs" />
+    <Compile Include="Assets\Scripts\NPC.cs" />
     <Compile Include="Assets\Scripts\DungeonDoor.cs" />
+    <Compile Include="Assets\Scripts\objData.cs" />
+    <Compile Include="Assets\Scripts\TalkManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Png\Item\lpc-food-v2 (2)\lpc-food-v2\CREDITS-food.txt" />
     <None Include="Assets\Png\Item\lpc-food-v1 (2)\lpc-food-v1\CREDITS-food.txt" />
+    <None Include="Assets\UI pack\Documentation.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

@@ -425,7 +425,10 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 0, y: -7}
       tessellationDetail: 0
       bones: []
       spriteID: 9b2469ccaff111b4c98ad66c9938a6e6
@@ -446,7 +449,13 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -7}
+        - {x: -7, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 7}
+        - {x: 7, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: e80fababfe434fe489718ce481a41a38
@@ -845,7 +854,12 @@ TextureImporter:
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
-      physicsShape: []
+      physicsShape:
+      - - {x: -8, y: 8}
+        - {x: -8, y: -7}
+        - {x: -7, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
       spriteID: af27b3bb934477143a0aa36c56f6d6e5
@@ -18639,11 +18653,11 @@ TextureImporter:
       PokemonLike_780: 1531290413
       PokemonLike_687: -696175511
       PokemonLike_534: -1042503574
-      PokemonLike_479: 339055155
-      PokemonLike_536: 1168328756
       PokemonLike_145: -1764647344
-      PokemonLike_345: 279103732
       PokemonLike_197: 1474747484
+      PokemonLike_479: 339055155
+      PokemonLike_345: 279103732
+      PokemonLike_536: 1168328756
       PokemonLike_722: 584807595
       PokemonLike_765: 1239480348
       PokemonLike_617: 207293342

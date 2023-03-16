@@ -9,32 +9,37 @@ public class GameManager : MonoBehaviour
     public GameObject talkPanel;
     public GameObject _scanObject;
     public bool isAction; //상태 저장용 변수
+   public TalkManager _talkManager;
+    int talkindex;
 
     public void Action(GameObject sacnObj)
     {
-        if (isAction) //이미 Action이 취해져있으면 
-        {
-            isAction= false;
-        }
-        else
-        {
-
-            isAction = true; //판넬을 띄운다.
-            _scanObject = sacnObj;//스캔한 오브젝트를 저장한 뒤
-            talkText.text = "이것의 이름은"+ _scanObject.name+"이라고 한다."; //대사를 띄운다.
-        }
+        _scanObject = sacnObj;
+        objData _objData = _scanObject.GetComponent<objData>();
+        Talk(_objData.id, _objData.isNpc);
 
         talkPanel.SetActive(isAction);
     }
 
-
-    void Start()
+    void Talk(int id, bool isNpc)
     {
-        
-    }
+        string talkData = _talkManager.GetTalk(id, talkindex);
+        if(talkData == null ) {
+            isAction= false;
+            talkindex=0;// 대화가 끝났을 때 0으로 초기화
+            return;
+        }
+        if( isNpc )
+        {
+            talkText.text = talkData;
 
-    void Update()
-    {
-        
+        }
+        else
+        {
+            talkText.text = talkData;
+        }
+        isAction= true;
+        talkindex++; //다음문장으로 넘어감
+
     }
 }
