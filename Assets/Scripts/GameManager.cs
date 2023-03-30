@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public TalkManager _talkManager;
 
     public bool isAction; //상태 저장용 변수
+    public bool _Action; //상태 저장용 변수
     int talkIndex;
 
     private void Start()
@@ -36,14 +37,16 @@ public class GameManager : MonoBehaviour
         if(_menuSet.activeSelf) // 옵션창이 이미 켜져있을 때
             {
                 _menuSet.SetActive(false);
+            Time.timeScale = 1;
+                _Action = false;
                
             }
             else
             {
             _menuSet.SetActive(true);
             Time.timeScale = 0;
+                _Action = true;
             }
-            Time.timeScale = 1;
         }
 
     }

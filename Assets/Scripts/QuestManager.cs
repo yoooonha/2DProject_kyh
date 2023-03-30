@@ -18,7 +18,7 @@ public class QuestManager : MonoBehaviour
     public void GenerateData()
     {
         questList.Add(10, new QuestData("마을 사람들과 대화하기",new int[] {1000,2000}));
-        questList.Add(20, new QuestData("루도의 동전 찾아주기",new int[] {5000,2000}));
+        questList.Add(20, new QuestData("NPC2의반지 찾아주기",new int[] {5000,2000}));
         questList.Add(30, new QuestData("퀘스트 올 클리어!", new int[] { 0 }));
     }
 
@@ -59,7 +59,7 @@ public class QuestManager : MonoBehaviour
             case 20:
                 if (questActionIndex == 1) //ring 먹었을때
                     questObject[0].SetActive(false);
-
+                //Destroy(questObject[0]);
                 break;
         }
     }

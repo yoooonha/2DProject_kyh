@@ -15,6 +15,9 @@ public class Player : MonoBehaviour
     GameObject _border;
     GameObject _scanObject;
     public GameManager manager;
+
+    public bool goMain;
+    public bool goMain1;
     //현재 바라보고 있는 방향 값을 가진 변수가 필요
     Vector3 dirVec;
 
@@ -37,12 +40,17 @@ public class Player : MonoBehaviour
 
 
         RayCast();
-        
 
-
-
-
-
+        if (goMain==true)
+        {
+        transform.position=new Vector3(2.45f, 1.37f, 0);
+        goMain1 = false;
+        }
+        if (goMain1==true)
+        {
+        transform.position=new Vector3(11.52f, 0.99f, 0);
+        goMain = false;
+        }
     }
 
    public void RayCast()
@@ -75,7 +83,7 @@ public class Player : MonoBehaviour
 
     public void move()
     {
-        if (manager.isAction) return;
+        if (manager.isAction || manager._Action) return;
 
         Vector2 v2 = Vector2.zero;
 
@@ -137,22 +145,25 @@ public class Player : MonoBehaviour
     {
         if (collision.gameObject.tag == "DungeonDoor")
         {
-
             SceneManager.LoadScene("Dungeon");
         }
         if (collision.gameObject.tag == "Border")
         {
-
             SceneManager.LoadScene("Main");
-            transform.position = new Vector3(2.5f, 1.5f, 0);
+            goMain = true;
+            
         }
-        if(collision.gameObject.tag== "HouseDoor1")
+        if (collision.gameObject.tag == "Border1")
+        {
+            SceneManager.LoadScene("Main");
+            goMain1 = true;
+
+        }
+        if (collision.gameObject.tag== "HouseDoor1")
         {
             SceneManager.LoadScene("House1");
         }
-
-
-
-
     }
+
+   
 }

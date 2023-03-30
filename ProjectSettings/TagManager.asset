@@ -8,6 +8,8 @@ TagManager:
   - Border
   - HouseDoor1
   - HouseDoor2
+  - DungeonExit
+  - Border1
   layers:
   - Default
   - TransparentFX

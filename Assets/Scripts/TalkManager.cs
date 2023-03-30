@@ -24,12 +24,14 @@ public class TalkManager : MonoBehaviour
         //isNpc=true
         talkData.Add(1000, new string[] { "안녕?:0", "이 곳은 처음이지?:0" });// talkindex[0],talkindex[1]
         talkData.Add(2000, new string[] { "오랜만이야!:1", "날씨가 참 좋구나:1" });
+        talkData.Add(3000, new string[] { "안녕:2", "우리집은 처음이지?:2","집 밖은 위험해!:2","무서운 마녀가 잡아갈지도 몰라:2" });
 
 
         //isNpc=false
-        talkData.Add(100, new string[] { "※무시무시한 마녀가 살고있어!※" });
-        talkData.Add(200, new string[] { "경고! 쓰레기를 버리지 마세요!" });
+        talkData.Add(100, new string[] { "※경고※","무시무시한 마녀가 살고있어" });
+        talkData.Add(200, new string[] { "쓰레기를 버리지 마세요" });
         talkData.Add(300, new string[] { "...", "이 곳은 지나갈 수 없어" });
+        talkData.Add(400, new string[] { "...", "안에 아무도 없는거 같다." });
 
         portraitData.Add(1000+0, NpcPortrait[0]);
         portraitData.Add(2000+1, NpcPortrait[1]);
@@ -46,17 +48,18 @@ public class TalkManager : MonoBehaviour
                 "안녕.:1",
                 "던전의 전설을 들으러 온거야?:1",
                 "그럼 일 좀 하나 해주면 좋을텐데:1",
-                "윗집에 반지를 두고와서 찾아줬으면 해:1"
+                "호수 근처에 반지를 잃어버려서 찾아줬으면 해:1"
         });
 
-        talkData.Add(20 + 3000, new string[]
+        talkData.Add(20 + 1000, new string[]
         {
-            "루도의 반지?:2",
-            "자기 물건을 흘리고 다니면 못쓰지!:2",
-            "나중에 한마디 해야겠어.:2"
-        });
+            "...:0",
+            "반지?:0",
+            "자기 물건을 흘리고 다니면 못쓰지!:0",
+            "나중에 한마디 해야겠어.:0"
+        });;
 
-        talkData.Add(20 + 2000, new string[] { "찾으면 곡 좀 가져다 줘.:1", });
+        talkData.Add(20 + 2000, new string[] { "찾으면 꼭 좀 가져다 줘.:1", });
         talkData.Add(20 + 5000, new string[] { "근처에 반지를 찾았다." });
 
         talkData.Add(21 + 2000, new string[] { "엇 찾아줘서 고마워.:1" });
