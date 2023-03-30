@@ -1,42 +1,94 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
-using UnityEngine.Sprites;
+
 
 public class TalkManager : MonoBehaviour
 {
     Dictionary<int, string[]> talkData;
-    Dictionary<int, Sprite[]> ImageData;
+    Dictionary<int, Sprite> portraitData;
 
-    public Sprite[] NpcImage;
+    public Sprite[] NpcPortrait;
   
-    void Start()
+    void Awake()
     {
         talkData = new Dictionary<int, string[]>();
-        ImageData = new Dictionary<int, Sprite[]>();
-
+        portraitData = new Dictionary<int, Sprite>();
         GenerateData();
     }
 
     void GenerateData()
     {
         //isNpc=true
-        talkData.Add(1000, new string[] { "안녕?", "이 곳은 처음이지?" });// talkindex[0],talkindex[1]
-        talkData.Add(2000, new string[] { "오랜만이야!", "날씨가 참 좋구나" });
+        talkData.Add(1000, new string[] { "안녕?:0", "이 곳은 처음이지?:0" });// talkindex[0],talkindex[1]
+        talkData.Add(2000, new string[] { "오랜만이야!:1", "날씨가 참 좋구나:1" });
+
+
         //isNpc=false
-        talkData.Add(100, new string[] { "※절대 들어가지 마시오※" });
+        talkData.Add(100, new string[] { "※무시무시한 마녀가 살고있어!※" });
         talkData.Add(200, new string[] { "경고! 쓰레기를 버리지 마세요!" });
         talkData.Add(300, new string[] { "...", "이 곳은 지나갈 수 없어" });
 
+        portraitData.Add(1000+0, NpcPortrait[0]);
+        portraitData.Add(2000+1, NpcPortrait[1]);
+        portraitData.Add(3000+2, NpcPortrait[2]);
+        
+        
+        //Quest Talk
+        talkData.Add(10+1000,new string[] {//퀘스트아이디+npc아이디
+                "어서와.:0",
+                "이 던전에 놀라운 전설이 있다는데:0",
+                "오른쪽 마당집 쪽에 친구가 알려줄꺼야:0"
+        });
+        talkData.Add(11+2000,new string[] {//퀘스트아이디+npc아이디
+                "안녕.:1",
+                "던전의 전설을 들으러 온거야?:1",
+                "그럼 일 좀 하나 해주면 좋을텐데:1",
+                "윗집에 반지를 두고와서 찾아줬으면 해:1"
+        });
+
+        talkData.Add(20 + 3000, new string[]
+        {
+            "루도의 반지?:2",
+            "자기 물건을 흘리고 다니면 못쓰지!:2",
+            "나중에 한마디 해야겠어.:2"
+        });
+
+        talkData.Add(20 + 2000, new string[] { "찾으면 곡 좀 가져다 줘.:1", });
+        talkData.Add(20 + 5000, new string[] { "근처에 반지를 찾았다." });
+
+        talkData.Add(21 + 2000, new string[] { "엇 찾아줘서 고마워.:1" });
         
     }
-
-    public string GetTalk(int id, int talkindex)
+    public Sprite GetPortrait(int id,int portraitIndex)
     {
-        if (talkindex == talkData[id].Length)
+        return portraitData[id + portraitIndex];
+    }
+
+    public string GetTalk(int id, int talkIndex)
+    {
+        if (!talkData.ContainsKey(id)) //ContainsKey(): Dictionary에 key가 존재하는지 검사
+        {
+            if (!talkData.ContainsKey(id - id % 10))
+                return GetTalk(id - id % 100, talkIndex); //Get First Talk
+            else
+                return GetTalk(id - id % 10, talkIndex);
+        }
+
+
+        if (talkIndex == talkData[id].Length)
             return null;
         else
-        return talkData[id][talkindex]; //id로 대화 가져오기 / talkindex로 대화 한문장 가져오기
+            return talkData[id][talkIndex];
+
     }
-}
+            
+    }
+
+//ContainsKey() : Dictionary에 Key가 존재하는지 검사
+// id가 없으면 퀘스트 대화순서 제거 후 재탐색
+//21 + 1000 = 1021 / 10 =102.1 1021-1=1020
+
+//id로 대화 가져오기 / talkindex로 대화 한문장 가져오기

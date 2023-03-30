@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] float _speed;
-    [SerializeField] GameObject _option;
+   // [SerializeField] GameObject _option;
 
     Rigidbody2D rigid;
     Animator _ani;
@@ -37,21 +37,12 @@ public class Player : MonoBehaviour
 
 
         RayCast();
-
-        if (Input.GetKeyUp(KeyCode.Escape))
-        {
-            _option.SetActive(true);
-            Time.timeScale = 0;
-        }
-        else if (Input.GetKeyUp(KeyCode.Escape) && Input.GetKeyUp(KeyCode.Escape))
-        {
-            _option.SetActive(false);
-            Time.timeScale = 1;
-        }
+        
 
 
 
-     
+
+
     }
 
    public void RayCast()
@@ -84,13 +75,13 @@ public class Player : MonoBehaviour
 
     public void move()
     {
-
+        if (manager.isAction) return;
 
         Vector2 v2 = Vector2.zero;
 
+
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            //manager.isAction = false;
             dirVec = Vector3.right;
             _ani.SetInteger("move", 1);
             transform.Translate(Vector2.right * Time.deltaTime * _speed);
