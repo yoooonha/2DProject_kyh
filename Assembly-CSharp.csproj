@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{D2456625-635D-DBC6-0173-00F2E1888C48}</ProjectGuid>
+    <ProjectGuid>{507FAE29-A6C7-0494-D8BF-3FFB8FD3101B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -57,12 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\TalkManager.cs" />
-    <Compile Include="Assets\Scripts\Lobby_UI\Option.cs" />
+    <Compile Include="Assets\Scripts\Lobby_UI\LobbyMove.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\UI pack\Scripts\FillValueNumber.cs" />
     <Compile Include="Assets\Scripts\NPC.cs" />
     <Compile Include="Assets\Scripts\objData.cs" />
+    <Compile Include="Assets\Scripts\OpenStone.cs" />
     <Compile Include="Assets\Scripts\QuestManager.cs" />
     <Compile Include="Assets\Scripts\DungeonDoor.cs" />
   </ItemGroup>
