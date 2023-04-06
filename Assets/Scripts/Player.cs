@@ -7,17 +7,21 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] float _speed;
+    [SerializeField] Transform _player;
    // [SerializeField] GameObject _option;
 
     Rigidbody2D rigid;
     Animator _ani;
-
+    
     GameObject _border;
     GameObject _scanObject;
     public GameManager manager;
 
+    public bool BossRoom;
+    public bool BossClear;
     public bool goMain;
     public bool goMain1;
+
     //현재 바라보고 있는 방향 값을 가진 변수가 필요
     Vector3 dirVec;
 
@@ -35,22 +39,20 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Dungeon>>main
+
+        //house>>main
+        if (goMain1 == true)
+        {
+            transform.position = new Vector3(11.47f, 0.67f, 0);
+        }
         
         move();
 
 
         RayCast();
 
-        if (goMain==true)
-        {
-        transform.position=new Vector3(2.45f, 1.37f, 0);
-        goMain1 = false;
-        }
-        if (goMain1==true)
-        {
-        transform.position=new Vector3(11.52f, 0.99f, 0);
-        goMain = false;
-        }
+        
     }
 
    public void RayCast()
@@ -147,16 +149,19 @@ public class Player : MonoBehaviour
         {
             SceneManager.LoadScene("Dungeon");
         }
-        if (collision.gameObject.tag == "Border")
+        if (collision.gameObject.tag == "Border")//Dungeon>>main
         {
             SceneManager.LoadScene("Main");
             goMain = true;
+            goMain1 = false;
+           
             
         }
-        if (collision.gameObject.tag == "Border1")
+        if (collision.gameObject.tag == "Border1")//house>>main
         {
             SceneManager.LoadScene("Main");
             goMain1 = true;
+            goMain = false;
 
         }
         if (collision.gameObject.tag== "HouseDoor1")
@@ -165,5 +170,20 @@ public class Player : MonoBehaviour
         }
     }
 
-   
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "BossRoom")
+            BossRoom = true;
+        if (collision.gameObject.tag == "BossClear")
+            BossClear = true;
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "BossRoom")
+            BossRoom = false;
+        if (collision.gameObject.tag == "BossClear")
+            BossClear = false;
+    }
+
+
 }
