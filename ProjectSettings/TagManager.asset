@@ -10,6 +10,9 @@ TagManager:
   - HouseDoor2
   - DungeonExit
   - Border1
+  - BossRoom
+  - BossClear
+  - Hero
   layers:
   - Default
   - TransparentFX

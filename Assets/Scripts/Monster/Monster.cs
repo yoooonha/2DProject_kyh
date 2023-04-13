@@ -9,10 +9,16 @@ public class Monster : MonoBehaviour
     public int _hp;
     [SerializeField] Transform _target;//target
     [SerializeField][Range(0f, 3f)] float contactDistance;
+    public float findDistance;
+    [SerializeField] Zone _zone;
+
+    public GameObject _excam;
+    [SerializeField] SpriteRenderer _img;
+    [SerializeField] Animator _ani2;
     
 
     bool isLive=true;//몬스터가 살아있는지 죽었는지
-    bool follow;
+    //bool follow;
     MonsterController _mc;
     Rigidbody2D _rigid;
     Animator _ani;
@@ -39,27 +45,51 @@ public class Monster : MonoBehaviour
     {
         if (!isLive)
             return;
-        if (Vector2.Distance(transform.position, _target.position) > contactDistance && follow)
+        if(Vector2.Distance(transform.position, _target.position) < contactDistance)
         {
-            transform.Translate((_target.position - transform.position).normalized * Time.deltaTime * _speed);
-            _render.flipX = _target.position.x > transform.position.x;
+            _img.color=new Color(255,255,255,255);
+            _ani2.SetBool("Find", true);
+            Invoke("targetMove", 0.7f);
+       
         }
         else
+        {
+            _img.color = new Color(255, 255, 255, 0);
+            _zone.follow=false;
+            _ani.SetBool("Move", false);
             _rigid.velocity = Vector2.zero;
 
-
+        }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void targetMove()
     {
-        follow = true;
+        _zone.follow=true;
         _ani.SetBool("Move", true);
+        transform.Translate((_target.position - transform.position).normalized * Time.deltaTime * _speed);
+        _render.flipX = _target.position.x > transform.position.x;
+        
+
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        follow= false;
-        _ani.SetBool("Move", false);
+        if (!(collision.gameObject.name == "Player")) return;
+        {
+            _ani.SetBool("Attack",true);
+            _img.color = new Color(255, 255, 255, 0);
+        } 
+        
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        _ani.SetBool("Attack", false);
+
 
     }
+
+
+
+
 }
