@@ -7,15 +7,22 @@ using UnityEngine.SceneManagement;
 public class Player : MonoBehaviour
 {
     [SerializeField] float _speed;
+    [SerializeField] int _hp;
+    [SerializeField] int _attack;
     [SerializeField] Transform _player;
+    [SerializeField] GameObject _uiPanel;
+    public bool isGameOver = false;
    // [SerializeField] GameObject _option;
 
     Rigidbody2D rigid;
     Animator _ani;
     
     GameObject _border;
-    GameObject _scanObject;
+    public GameObject _scanObject;
     public GameManager manager;
+    public Monster monster;
+
+    OpenStone _openStone;
 
     public bool BossRoom;
     public bool BossClear;
@@ -27,8 +34,19 @@ public class Player : MonoBehaviour
 
     //bool isIdle = true;
 
-    
-    // Start is called before the first frame update
+    public void Hitted(int dmg)
+    {
+        if (_hp < 0) return;
+        _hp -= dmg;
+        if (_hp < 0)
+        {
+            //Game over
+            isGameOver = true;
+            _uiPanel.SetActive(true);
+            this.gameObject.SetActive(false);
+
+        }
+    }
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -36,7 +54,6 @@ public class Player : MonoBehaviour
         
 
     }
-    // Update is called once per frame
     void Update()
     {
         //Dungeon>>main
@@ -59,7 +76,7 @@ public class Player : MonoBehaviour
     {
         //스캔할 수 있다
         Debug.DrawRay(rigid.position, dirVec * 0.8f, new Color(0, 1, 0));
-        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.8f, LayerMask.GetMask("Object"));
+        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.8f, 1 <<LayerMask.NameToLayer("Object"));
 
         if (rayHit.collider != null)
         {
@@ -67,24 +84,27 @@ public class Player : MonoBehaviour
         }
         else
         {
-            _scanObject = null;
+            return; 
         }
-        if (Input.GetKeyDown(KeyCode.Space)&&_scanObject!=null)
+        if (Input.GetKeyDown(KeyCode.Space)&&_scanObject!=null&&_scanObject.GetComponent<objData>()!=null)
         {
             manager.Action(_scanObject);
         }
-     
-        
+
+        if(Input.GetKeyDown(KeyCode.Space)&& _scanObject.tag== "Stone")
+        {
+            _scanObject.GetComponent<OpenStone>().isPlayerEnter = true;
+        }
 
     }
-    
-
+   
 
 
 
 
     public void move()
     {
+        if(isGameOver) { return; }
         if (manager.isAction || manager._Action) return;
 
         Vector2 v2 = Vector2.zero;

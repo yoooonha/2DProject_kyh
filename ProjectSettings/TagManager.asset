@@ -13,6 +13,7 @@ TagManager:
   - BossRoom
   - BossClear
   - Hero
+  - Stone
   layers:
   - Default
   - TransparentFX

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
@@ -7,6 +8,10 @@ public class Monster : MonoBehaviour
 {
     public float _speed;
     public int _hp;
+    bool isHitted = false;
+    bool isAttack = false;
+    public Player _player;
+    [SerializeField] int _attack;
     [SerializeField] Transform _target;//target
     [SerializeField][Range(0f, 3f)] float contactDistance;
     public float findDistance;
@@ -15,6 +20,7 @@ public class Monster : MonoBehaviour
     public GameObject _excam;
     [SerializeField] SpriteRenderer _img;
     [SerializeField] Animator _ani2;
+
     
 
     bool isLive=true;//몬스터가 살아있는지 죽었는지
@@ -72,13 +78,38 @@ public class Monster : MonoBehaviour
 
     }
 
+    void onHitted(int hitpower)
+    {
+        _hp -= hitpower;
+        isHitted = true;
+        if (_hp < 0)
+        {
+            _ani.SetTrigger("Dead");
+        }
+        gameObject.SetActive(false);
+
+    }
+    public void Attack()
+    {
+
+       _player.GetComponent<Player>().Hitted(5);
+
+    }
+   
+
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!(collision.gameObject.name == "Player")) return;
         {
-            _ani.SetBool("Attack",true);
-            _img.color = new Color(255, 255, 255, 0);
+            isAttack = true;
+            _ani.SetBool("Attack", true);
+            collision.gameObject.GetComponent<Player>().Hitted(5);
+
+
+
         } 
+       
         
     }
 

@@ -6,7 +6,7 @@ public class OpenStone : MonoBehaviour
 {
     public GameObject _player;
     Animator _ani;
-    bool isPlayerEnter;
+    public bool isPlayerEnter;
 
     void Awake()
     {
@@ -18,7 +18,7 @@ public class OpenStone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isPlayerEnter&&Input.GetKeyDown(KeyCode.Space)) 
+        if(isPlayerEnter==true) 
         {
             _ani.SetTrigger("Open");
         }
@@ -26,18 +26,13 @@ public class OpenStone : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject == _player)
-        {
-            isPlayerEnter = true;
-        }
+        //isPlayerEnter = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.gameObject == _player)
-        {
-            isPlayerEnter = false;
-        }
+        isPlayerEnter = false;
+
     }
 
 }
