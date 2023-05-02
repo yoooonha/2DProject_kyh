@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 5477114342871324528}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Player
+  m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,8 +121,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 7
+  _hp: 0
+  _attack: 0
   _player: {fileID: 0}
+  _uiPanel: {fileID: 0}
+  isGameOver: 0
+  _scanObject: {fileID: 0}
   manager: {fileID: 0}
+  monster: {fileID: 0}
   BossRoom: 0
   BossClear: 0
   goMain: 0

@@ -10,7 +10,7 @@ public class Monster : MonoBehaviour
     public int _hp;
     bool isHitted = false;
     bool isAttack = false;
-    public Player _player;
+    [SerializeField] Player _player;
     [SerializeField] int _attack;
     [SerializeField] Transform _target;//target
     [SerializeField][Range(0f, 3f)] float contactDistance;
@@ -40,6 +40,7 @@ public class Monster : MonoBehaviour
     void Update()
     {
         move();
+       
         
      
 
@@ -89,13 +90,14 @@ public class Monster : MonoBehaviour
         gameObject.SetActive(false);
 
     }
-    public void Attack()
+    public void Attack()//몬스터 공격 애니메이션 이벤트 함수
     {
 
-       _player.GetComponent<Player>().Hitted(5);
+        _player.GetComponent<Player>().Hitted(5);
+
 
     }
-   
+
 
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -105,6 +107,7 @@ public class Monster : MonoBehaviour
             isAttack = true;
             _ani.SetBool("Attack", true);
             collision.gameObject.GetComponent<Player>().Hitted(5);
+
 
 
 
