@@ -108,7 +108,6 @@ public class GameManager : MonoBehaviour
         PlayerPrefs.SetInt("QuestId", questManager.questId);
         PlayerPrefs.SetInt("QuestActionIndex", questManager.questActionIndex);
         PlayerPrefs.Save();
-
         _menuSet.SetActive(false);
     }
 

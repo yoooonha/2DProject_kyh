@@ -221,7 +221,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 958762657}
-  isPlayerEnter: 0
   _hpBar: {fileID: 1449736796}
   _moncon: {fileID: 558146910}
 --- !u!1 &54272754
@@ -485,7 +484,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d3e99fc6b2e689d42a1b0b9fffb8440b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6406,7 +6405,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &575527121
 Transform:
   m_ObjectHideFlags: 0
@@ -6927,7 +6926,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 958762657}
-  isPlayerEnter: 0
   _hpBar: {fileID: 1449736796}
   _moncon: {fileID: 558146910}
 --- !u!4 &741298759 stripped
@@ -10998,7 +10996,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 958762657}
-  isPlayerEnter: 0
   _hpBar: {fileID: 1449736796}
   _moncon: {fileID: 558146910}
 --- !u!4 &1675057290 stripped
@@ -11129,11 +11126,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e464f8a00f8df6d44a06db8664400d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stones:
-  - {fileID: 505858477}
-  - {fileID: 43368434}
-  - {fileID: 40854920}
-  - {fileID: 1775812135}
 --- !u!1001 &1756984652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11237,7 +11229,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 958762657}
-  isPlayerEnter: 0
   _hpBar: {fileID: 1449736796}
   _moncon: {fileID: 558146910}
 --- !u!1001 &1808575166
@@ -12245,11 +12236,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5477114342871324533, guid: 6a64ad169b6690a4e9dffc1f84778ea4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.03
+      value: -3.53
       objectReference: {fileID: 0}
     - target: {fileID: 5477114342871324533, guid: 6a64ad169b6690a4e9dffc1f84778ea4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -5.05
+      value: 0.67
       objectReference: {fileID: 0}
     - target: {fileID: 5477114342871324533, guid: 6a64ad169b6690a4e9dffc1f84778ea4, type: 3}
       propertyPath: m_LocalPosition.z

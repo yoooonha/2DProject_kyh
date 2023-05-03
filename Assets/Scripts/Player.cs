@@ -11,29 +11,20 @@ public class Player : MonoBehaviour
     [SerializeField] int _attack;
     [SerializeField] Transform _player;
     [SerializeField] GameObject _uiPanel;
-    public bool isGameOver = false;
-   // [SerializeField] GameObject _option;
-
+    [SerializeField] GameManager manager;
+    [SerializeField] Monster monster;
     Rigidbody2D rigid;
     Animator _ani;
-    
     GameObject _border;
-    public GameObject _scanObject;
-    public GameManager manager;
-    public Monster monster;
-
+    GameObject _scanObject;
     OpenStone _openStone;
-
-    public bool BossRoom;
-    public bool BossClear;
-    public bool goMain;
-    public bool goMain1;
-
+    bool isGameOver = false;
+    protected bool _bossRoom;
+    public bool BossRoom { get { return _bossRoom; } set { _bossRoom = value; } }
+    protected bool _bossClear;
+    public bool BossClear { get { return _bossClear; } set { _bossClear = value; } }
     //현재 바라보고 있는 방향 값을 가진 변수가 필요
     Vector3 dirVec;
-
-    //bool isIdle = true;
-
     public void Hitted(int dmg)
     {
         if (_hp < 0) return;
@@ -44,32 +35,19 @@ public class Player : MonoBehaviour
             isGameOver = true;
             _uiPanel.SetActive(true);
             this.gameObject.SetActive(false);
-
         }
     }
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
         _ani = GetComponent<Animator>();
-        
-
+        Vector2 v2 = new Vector2(PlayerPrefs.GetFloat("savePlayerX"), PlayerPrefs.GetFloat("savePlayerY"));
+        transform.position = v2;
     }
     void Update()
     {
-        //Dungeon>>main
-
-        //house>>main
-        if (goMain1 == true)
-        {
-            transform.position = new Vector3(11.47f, 0.67f, 0);
-        }
-        
         move();
-
-
         RayCast();
-
-        
     }
 
    public void RayCast()
@@ -77,7 +55,6 @@ public class Player : MonoBehaviour
         //스캔할 수 있다
         Debug.DrawRay(rigid.position, dirVec * 0.8f, new Color(0, 1, 0));
         RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.8f, 1 <<LayerMask.NameToLayer("Object"));
-
         if (rayHit.collider != null)
         {
             _scanObject = rayHit.collider.gameObject;
@@ -91,24 +68,17 @@ public class Player : MonoBehaviour
             manager.Action(_scanObject);
         }
 
-        if(Input.GetKeyDown(KeyCode.Space)&& _scanObject.tag== "Stone")
+        if(Input.GetKeyDown(KeyCode.Space)&& _scanObject.CompareTag("Stone"))
         {
             _scanObject.GetComponent<OpenStone>().isPlayerEnter = true;
         }
 
     }
-   
-
-
-
-
     public void move()
     {
         if(isGameOver) { return; }
         if (manager.isAction || manager._Action) return;
-
         Vector2 v2 = Vector2.zero;
-
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -162,46 +132,55 @@ public class Player : MonoBehaviour
 
 
     }
+    public void postionSet(float x,float y)
+    {
+        x=transform.position.x; 
+        y=transform.position.y;
+        PlayerPrefs.SetFloat("playerX",transform.position.x);
+        PlayerPrefs.SetFloat("playerY",transform.position.y);
+    }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "DungeonDoor")
+        if (collision.gameObject.CompareTag("DungeonDoor"))
         {
+            PlayerPrefs.SetFloat("savePlayerX", 0.03f);
+            PlayerPrefs.SetFloat("savePlayerY", -5.05f);
             SceneManager.LoadScene("Dungeon");
         }
-        if (collision.gameObject.tag == "Border")//Dungeon>>main
+        if (collision.gameObject.CompareTag("Border"))//Dungeon>>main
         {
+            PlayerPrefs.SetFloat("savePlayerX", 2.56f);
+            PlayerPrefs.SetFloat("savePlayerY", 1.36f);
             SceneManager.LoadScene("Main");
-            goMain = true;
-            goMain1 = false;
-           
-            
         }
-        if (collision.gameObject.tag == "Border1")//house>>main
+        if (collision.gameObject.CompareTag("Border1"))//house>>main
         {
+            PlayerPrefs.SetFloat("savePlayerX", 11.64f);
+            PlayerPrefs.SetFloat("savePlayerY", 0.26f);
             SceneManager.LoadScene("Main");
-            goMain1 = true;
-            goMain = false;
 
         }
-        if (collision.gameObject.tag== "HouseDoor1")
+        if (collision.gameObject.CompareTag("HouseDoor1"))
         {
+            PlayerPrefs.SetFloat("savePlayerX", 0.02f);
+            PlayerPrefs.SetFloat("savePlayerY", -3.22f);
             SceneManager.LoadScene("House1");
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "BossRoom")
+        if (collision.gameObject.CompareTag("BossRoom"))
             BossRoom = true;
-        if (collision.gameObject.tag == "BossClear")
+        if (collision.gameObject.CompareTag("BossClear"))
             BossClear = true;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "BossRoom")
+        if (collision.gameObject.CompareTag("BossRoom"))
             BossRoom = false;
-        if (collision.gameObject.tag == "BossClear")
+        if (collision.gameObject.CompareTag("BossClear"))
             BossClear = false;
     }
 

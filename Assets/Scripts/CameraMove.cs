@@ -20,6 +20,7 @@ public class CameraMove : MonoBehaviour
         if (_Player.BossClear == true)
         {
             _Cam.position = Vector3.Lerp(_Cam.position, new Vector3(0, -0.28f, -10), 0.007f);
+            StartCoroutine(OnOff(_bosRoom));
         }
 
     }
@@ -27,5 +28,12 @@ public class CameraMove : MonoBehaviour
     {
         _bosRoom.SetActive(false);
         _bosClear.SetActive(true);
+    }
+
+    IEnumerator OnOff(GameObject room)
+    {
+        room.SetActive(true);
+        new WaitForSeconds(1f);
+        yield return null;
     }
 }

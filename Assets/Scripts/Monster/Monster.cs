@@ -6,26 +6,21 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Monster : MonoBehaviour
 {
-    public float _speed;
-    public int _hp;
-    bool isHitted = false;
-    bool isAttack = false;
-    [SerializeField] Player _player;
+    [SerializeField] float _speed;
+    [SerializeField] int _hp;
     [SerializeField] int _attack;
+    [SerializeField] Player _player;
     [SerializeField] Transform _target;//target
     [SerializeField][Range(0f, 3f)] float contactDistance;
-    public float findDistance;
     [SerializeField] Zone _zone;
-
-    public GameObject _excam;
     [SerializeField] SpriteRenderer _img;
     [SerializeField] Animator _ani2;
 
-    
-
+    bool isHitted = false;
+    bool isAttack = false;
+    float findDistance;
+    public GameObject _excam;
     bool isLive=true;//몬스터가 살아있는지 죽었는지
-    //bool follow;
-    MonsterController _mc;
     Rigidbody2D _rigid;
     Animator _ani;
     SpriteRenderer _render;
@@ -40,14 +35,7 @@ public class Monster : MonoBehaviour
     void Update()
     {
         move();
-       
-        
-     
-
     }
-
-
-
     void move()
     {
         if (!isLive)
@@ -75,8 +63,6 @@ public class Monster : MonoBehaviour
         _ani.SetBool("Move", true);
         transform.Translate((_target.position - transform.position).normalized * Time.deltaTime * _speed);
         _render.flipX = _target.position.x > transform.position.x;
-        
-
     }
 
     void onHitted(int hitpower)
@@ -94,11 +80,7 @@ public class Monster : MonoBehaviour
     {
 
         _player.GetComponent<Player>().Hitted(5);
-
-
     }
-
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -107,23 +89,11 @@ public class Monster : MonoBehaviour
             isAttack = true;
             _ani.SetBool("Attack", true);
             collision.gameObject.GetComponent<Player>().Hitted(5);
-
-
-
-
         } 
-       
-        
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         _ani.SetBool("Attack", false);
-
-
     }
-
-
-
-
 }

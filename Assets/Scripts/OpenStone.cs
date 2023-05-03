@@ -9,7 +9,9 @@ public class OpenStone : MonoBehaviour
 {
     public GameObject _player;
     Animator _ani;
-    public bool isPlayerEnter;
+    protected bool _isPlayerEnter;
+    public bool isPlayerEnter { get { return _isPlayerEnter; } set { _isPlayerEnter = value; } }
+    
     GameObject _monster;
     List<Monster> monsters = new List<Monster>();
     [SerializeField] GameObject _hpBar;
@@ -21,21 +23,16 @@ public class OpenStone : MonoBehaviour
         _ani = GetComponent<Animator>();
         isPlayerEnter = false;
     }
-    private void Start()
-    {
-       
-
-    }
+  
     void Update()
     {
         if(isPlayerEnter==true) 
         {
             _ani.SetTrigger("Open");
-           makeMonster();
+            makeMonster();
         }
 
     }
-    
 
     void makeMonster()
     {
@@ -52,11 +49,6 @@ public class OpenStone : MonoBehaviour
             _hpBar.SetActive(true);
         }
 
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        
     }
 
     private void OnTriggerExit2D(Collider2D collision)
