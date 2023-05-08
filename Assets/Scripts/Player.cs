@@ -72,6 +72,10 @@ public class Player : MonoBehaviour
         {
             _scanObject.GetComponent<OpenStone>().isPlayerEnter = true;
         }
+        else if (Input.GetKeyDown(KeyCode.Space) && _scanObject.CompareTag("Treasure"))
+        {
+            _scanObject.GetComponent<OpenTreasure>().isPlayerEnter2 = true;
+        }
 
     }
     public void move()
