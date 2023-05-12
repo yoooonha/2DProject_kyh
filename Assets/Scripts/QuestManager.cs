@@ -10,6 +10,7 @@ public class QuestManager : MonoBehaviour
     Dictionary<int, QuestData> questList; //퀘스트 데이터를 저장할 Dictionary 변수 생성
         void Awake()
     {
+        //int key에 QuestData값을 저장하는 Dictionary 함수
         questList = new Dictionary<int, QuestData>();//초기화
         GenerateData();
 
@@ -68,10 +69,10 @@ public class QuestManager : MonoBehaviour
 
 public class QuestData
 {
-    public string questName;
+    public string questName;//생성자의 변수.. 필드
     public int[] npcId;
 
-    public QuestData(string name, int[] npc) //구조체를 생성을 위해 매개변수 생성자를 작성
+    public QuestData(string name, int[] npc) //생성자
     {
         questName = name;
         npcId = npc;

@@ -12,9 +12,9 @@ public class TalkManager : MonoBehaviour
 
     public Sprite[] NpcPortrait;
   
-    void Awake()
+    void Awake()//게임오브젝트가 꺼져있어도 실행됨
     {
-        talkData = new Dictionary<int, string[]>();
+        talkData = new Dictionary<int, string[]>();//int key에 string배열값을 저장하는 Dictionary함수
         portraitData = new Dictionary<int, Sprite>();
         GenerateData();
     }

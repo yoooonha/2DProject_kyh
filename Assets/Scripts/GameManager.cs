@@ -104,7 +104,7 @@ public class GameManager : MonoBehaviour
         //player.y
         //간단한 데이터 저장 기능을 지원하는 클래스
         PlayerPrefs.SetFloat("PlayerX", _player.transform.position.x); 
-        PlayerPrefs.SetFloat("PlayerX", _player.transform.position.y);
+        PlayerPrefs.SetFloat("PlayerY", _player.transform.position.y);
         PlayerPrefs.SetInt("QuestId", questManager.questId);
         PlayerPrefs.SetInt("QuestActionIndex", questManager.questActionIndex);
         PlayerPrefs.Save();
