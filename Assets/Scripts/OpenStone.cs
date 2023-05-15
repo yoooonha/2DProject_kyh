@@ -34,13 +34,13 @@ public class OpenStone : MonoBehaviour
     void makeMonster()
     {
         if (!isPlayerEnter) return;
-        int ran = Random.Range(0, 10);
-        if (ran<3)
+        int ran = Random.Range(0, 1);
+        if (ran<0)
         {
             Debug.Log("Not Monster");
             
         }
-        else if (ran<5)
+        else if (ran<1)
         {
           _moncon.SetActive(true);
             _hpBar.SetActive(true);

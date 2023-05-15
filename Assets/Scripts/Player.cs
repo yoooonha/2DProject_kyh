@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     [SerializeField] float _speed;
-    [SerializeField] int _hp;
+    [SerializeField] float _hp;
     [SerializeField] int _attack;
     [SerializeField] Transform _player;
     [SerializeField] GameObject _uiPanel;
     [SerializeField] GameManager manager;
     [SerializeField] Monster monster;
+    [SerializeField] Slider _Hpbar;
     Rigidbody2D rigid;
     Animator _ani;
     GameObject _border;
@@ -25,12 +27,27 @@ public class Player : MonoBehaviour
     public bool BossClear { get { return _bossClear; } set { _bossClear = value; } }
     //현재 바라보고 있는 방향 값을 가진 변수가 필요
     Vector3 dirVec;
+    public void HPBar()
+    {
+        _Hpbar.value -= 0.05f;
+    }
+
+    public void Attack()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            monster.GetComponent<Monster>().onHitted(3);
+        }
+    }
+
     public void Hitted(int dmg)
     {
         if (_hp < 0) return;
         _hp -= dmg;
+        HPBar();
         if (_hp < 0)
         {
+            _Hpbar.value = 0;
             //Game over
             isGameOver = true;
             _uiPanel.SetActive(true);
@@ -72,11 +89,7 @@ public class Player : MonoBehaviour
         {
             _scanObject.GetComponent<OpenStone>().isPlayerEnter = true;
         }
-        //else if (Input.GetKeyDown(KeyCode.Space) && _scanObject.CompareTag("Treasure"))
-        //{
-        //    _scanObject.GetComponent<OpenTreasure>().isPlayerEnter2 = true;
-        //}
-
+       
     }
     public void move()
     {

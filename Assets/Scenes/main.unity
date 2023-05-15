@@ -1287,12 +1287,52 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6818077850647175216, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818077850647175216, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818077850647175216, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818077850647175216, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818077850647175216, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 212886231, guid: 225b1eb48b390024e8c9d456ec6d50f7, type: 3}
+    - target: {fileID: 6818077850647175216, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818077850647175216, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
+      propertyPath: m_DrawMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818077850647175216, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
       propertyPath: m_SortingOrder
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6818077850647175217, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818077850647175217, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818077850647175217, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818077850647175217, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 6818077850647175217, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1344,7 +1384,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6818077850647175222, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}
@@ -7955,7 +7995,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.5223491
+      m_AnimationSpeed: 1.9813253
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 8, y: -6, z: 0}
@@ -7963,7 +8003,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.1615305
+      m_AnimationSpeed: 1.9704477
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -4, y: -4, z: 0}
@@ -7971,7 +8011,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.230648
+      m_AnimationSpeed: 1.7397559
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -4, y: -3, z: 0}
@@ -7979,7 +8019,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.5362906
+      m_AnimationSpeed: 1.0536108
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 8, y: -2, z: 0}
@@ -7987,7 +8027,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.2107389
+      m_AnimationSpeed: 1.1504806
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -2, y: 3, z: 0}
@@ -7995,7 +8035,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.0192641
+      m_AnimationSpeed: 1.7439616
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -1, y: 3, z: 0}
@@ -8003,7 +8043,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.974714
+      m_AnimationSpeed: 1.7134291
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 0, y: 3, z: 0}
@@ -8011,7 +8051,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.932404
+      m_AnimationSpeed: 1.4114661
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -8502,11 +8542,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
+  near clip plane: 8.63
+  far clip plane: 12.4
+  field of view: 76
   orthographic: 1
-  orthographic size: 6
+  orthographic size: 6.506024
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -9358,7 +9398,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.16, y: 0.16}
-    newSize: {x: 0.16, y: 0.16}
+    newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

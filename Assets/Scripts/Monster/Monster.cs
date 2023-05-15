@@ -65,7 +65,7 @@ public class Monster : MonoBehaviour
         _render.flipX = _target.position.x > transform.position.x;
     }
 
-    void onHitted(int hitpower)
+    public void onHitted(int hitpower)
     {
         _hp -= hitpower;
         isHitted = true;
@@ -88,7 +88,6 @@ public class Monster : MonoBehaviour
         {
             isAttack = true;
             _ani.SetBool("Attack", true);
-            collision.gameObject.GetComponent<Player>().Hitted(5);
         } 
     }
 
