@@ -1,0 +1,9 @@
+#Lobby Scene
+처음 실행했을때
+"GameUI" UI Canvus 
+White GameObject에 붙어있는 Animator "White"Controller를 통해 White 이미지의 알파값이 0에서 0.5까지 110프레임동안 Fade In 효과가 나타난다.
+Title GameObject에 붙어있는 Animator "TitleMove" Controller를 통해 포지션이 이동하는 애니메이션효과가 나타난다
+두 애니메이션이 끝났을 때 "PlayerButton"의 붙어있는 알파값이 0에서 1로 나타나는 애니메이션효과가 나타난다
+애니메이션 효과가 끝났을 때 UI Button을 마우스를 클릭했을 때 GameUI에 스크립트 LobbyMove.OnButtonGamePlay 함수를 호출하여
+SceneManager.LoadScene을 통해 "Main"의 이름을 가진 Scene으로 이동한다.
+PlayerPrefs.SetFloat >>> "Player" 게임오브젝트의 위치를 초기화 해준다.
