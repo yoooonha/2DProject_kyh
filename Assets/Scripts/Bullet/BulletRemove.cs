@@ -13,7 +13,7 @@ public class BulletRemove : MonoBehaviour
     void Update()
     {
         _timer += Time.deltaTime;
-        if (_timer > 5f)
+        if (_timer > 3f)
         {
             Remove();
         }

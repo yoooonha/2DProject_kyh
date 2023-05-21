@@ -88,7 +88,13 @@ public class Monster : MonoBehaviour
         {
             isAttack = true;
             _ani.SetBool("Attack", true);
-        } 
+        }
+        if (collision.gameObject.GetComponent<Damage>() != null)
+        {
+            int damage = collision.gameObject.GetComponent<Damage>().getDamage();
+            collision.gameObject.GetComponent<BulletRemove>().Remove();
+            onHitted(damage);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)

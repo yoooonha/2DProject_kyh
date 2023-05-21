@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
     Animator _ani;
     GameObject _border;
     GameObject _scanObject;
+    GameObject _bullet;
+
     OpenStone _openStone;
     bool isGameOver = false;
     protected bool _bossRoom;
@@ -36,7 +38,11 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            monster.GetComponent<Monster>().onHitted(3);
+            Transform target = monster.transform;
+            GameObject temp = Instantiate(_bullet);
+            temp.transform.position = transform.position;
+            temp.name = "Bullet";
+            temp.GetComponent<Bullet>().Init(target);
         }
     }
 
@@ -60,11 +66,14 @@ public class Player : MonoBehaviour
         _ani = GetComponent<Animator>();
         Vector2 v2 = new Vector2(PlayerPrefs.GetFloat("savePlayerX"), PlayerPrefs.GetFloat("savePlayerY"));
         transform.position = v2;
+        _bullet = Resources.Load("Prefabs/Bullet") as GameObject;
     }
     void Update()
     {
         move();
         RayCast();
+        Attack();
+
     }
 
    public void RayCast()
