@@ -47,6 +47,8 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
                 _Action = true;
             }
+            Time.timeScale = 1;
+
         }
 
     }

@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     public void Init(Transform target)
     {
         _target = target;
-        _dir=(_target.position- transform.position).normalized;
+        _dir=(_target.position-transform.position+_dir).normalized;
     }
     public void Init(Vector3 dir)
     {

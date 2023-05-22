@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Monster : MonoBehaviour
@@ -15,12 +17,16 @@ public class Monster : MonoBehaviour
     [SerializeField] Zone _zone;
     [SerializeField] SpriteRenderer _img;
     [SerializeField] Animator _ani2;
+    [SerializeField] Slider _slider;
+    [SerializeField] GameObject _jail;
+    [SerializeField] GameObject _AttackMode;
 
     bool isHitted = false;
     bool isAttack = false;
-    float findDistance;
-    public GameObject _excam;
-    bool isLive=true;//몬스터가 살아있는지 죽었는지
+    bool isLive = true;//몬스터가 살아있는지 죽었는지
+   
+    float _timer;
+    //public GameObject _excam;
     Rigidbody2D _rigid;
     Animator _ani;
     SpriteRenderer _render;
@@ -35,6 +41,7 @@ public class Monster : MonoBehaviour
     void Update()
     {
         move();
+        colorChange();
     }
     void move()
     {
@@ -64,16 +71,46 @@ public class Monster : MonoBehaviour
         transform.Translate((_target.position - transform.position).normalized * Time.deltaTime * _speed);
         _render.flipX = _target.position.x > transform.position.x;
     }
-
+    void HpBar()
+    {
+        _slider.value -= 0.1f;
+        if(_slider.value == 0)
+        {
+            _jail.SetActive(false);
+            _AttackMode.SetActive(false);
+        }
+    }
     public void onHitted(int hitpower)
     {
         _hp -= hitpower;
         isHitted = true;
-        if (_hp < 0)
+        if (_hp == 0)
         {
+            isLive = false;
+            HpBar();
             _ani.SetTrigger("Dead");
+            Invoke("Remove", 1f);
         }
+    }
+    void Remove()
+    {
         gameObject.SetActive(false);
+
+    }
+    void colorChange()
+    {
+        if (isHitted == true)
+        {
+            _timer += Time.deltaTime;
+            _render.color = Color.red;
+            if (_timer > 0.5f)
+            {
+                //초기화
+                isHitted = false;
+                _render.color = Color.white;
+                _timer = 0f;
+            }
+        }
 
     }
     public void Attack()//몬스터 공격 애니메이션 이벤트 함수
@@ -84,7 +121,7 @@ public class Monster : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!(collision.gameObject.name == "Player")) return;
+        if ((collision.gameObject.name == "Player"))
         {
             isAttack = true;
             _ani.SetBool("Attack", true);
@@ -95,10 +132,14 @@ public class Monster : MonoBehaviour
             collision.gameObject.GetComponent<BulletRemove>().Remove();
             onHitted(damage);
         }
-    }
 
+    }
     private void OnCollisionExit2D(Collision2D collision)
     {
         _ani.SetBool("Attack", false);
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       
     }
 }
