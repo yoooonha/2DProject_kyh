@@ -1,10 +1,8 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 
 public class OpenStone : MonoBehaviour
 {
-   // public GameObject _player;
     Animator _ani;
     protected bool _isPlayerEnter;
     public bool isPlayerEnter { get { return _isPlayerEnter; } set { _isPlayerEnter = value; } }
@@ -12,8 +10,6 @@ public class OpenStone : MonoBehaviour
     [SerializeField] GameObject _moncon;
     void Awake()
     {
-        //_player = GameObject.FindGameObjectWithTag("Player");
-        //_monster = Resources.Load("Prefabs/Slime") as GameObject; //as GameObject Çüº¯È¯
         _ani = GetComponent<Animator>();
         isPlayerEnter = false;
     }
@@ -27,10 +23,6 @@ public class OpenStone : MonoBehaviour
         }
 
     }
-    private void Start()
-    {
-      
-    }
 
     void makeMonster()
     {
@@ -38,7 +30,7 @@ public class OpenStone : MonoBehaviour
         int ran = Random.Range(0, 10);
         if (ran<3)
         {
-            Debug.Log("Not Monster");
+            //Debug.Log("Not Monster");
             
         }
         else if (ran<7)
@@ -49,10 +41,5 @@ public class OpenStone : MonoBehaviour
 
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        isPlayerEnter = false;
-
-    }
-
+   
 }

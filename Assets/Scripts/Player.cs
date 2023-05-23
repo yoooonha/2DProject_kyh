@@ -13,13 +13,15 @@ public class Player : MonoBehaviour
     [SerializeField] Transform _player;
     [SerializeField] GameObject _uiPanel;
     [SerializeField] GameManager manager;
-    [SerializeField] Monster monster;
+    [SerializeField] MonsterController _monCon;
     [SerializeField] Slider _Hpbar;
     Rigidbody2D rigid;
     Animator _ani;
     GameObject _border;
     GameObject _scanObject;
     GameObject _bullet;
+    Vector3 _dir;
+    public float _timer = 0f;
 
     OpenStone _openStone;
     bool isGameOver = false;
@@ -36,15 +38,24 @@ public class Player : MonoBehaviour
 
     public void Attack()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+       
+        if (Input.GetKey(KeyCode.A))
         {
-            Transform target = monster.transform;
+            if (_timer > 0.2f)
+            {
+            Transform target = _monCon.getTargetMonster();
+            if (target == null) return;
             GameObject temp = Instantiate(_bullet);
-            temp.transform.position = transform.position;
+            Vector3 dir = (target.transform.position - transform.position).normalized;//nomalized 크기를 1로 바꿈
+            temp.transform.position = transform.position + dir;
+            //내위치+나로부터 적까지 방향
             temp.name = "Bullet";
             temp.GetComponent<Bullet>().Init(target);
+            _timer = 0f;
+            }
         }
     }
+    
 
     public void Hitted(int dmg)
     {
@@ -70,6 +81,7 @@ public class Player : MonoBehaviour
     }
     void Update()
     {
+        _timer += Time.deltaTime;
         move();
         RayCast();
         Attack();

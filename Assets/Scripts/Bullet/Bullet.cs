@@ -8,16 +8,14 @@ public class Bullet : MonoBehaviour
     Transform _target = null;
     Vector3 _dir;
     SpriteRenderer _render;
+    float _timer = 0f;
    
     public void Init(Transform target)
     {
         _target = target;
-        _dir=(_target.position-transform.position+_dir).normalized;
+        _dir=(_target.position-transform.position).normalized;
     }
-    public void Init(Vector3 dir)
-    {
-        _dir = dir;
-    }
+    
     private void Start()
     {
         _render= GetComponent<SpriteRenderer>();
@@ -26,8 +24,8 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         //대상위치 - 내위치
-        transform.Translate(_dir * Time.deltaTime * _speed);
+        transform.Translate(_dir* Time.deltaTime * _speed);
         _render.flipX= _target.position.x < transform.position.x;
-
+       
     }
 }

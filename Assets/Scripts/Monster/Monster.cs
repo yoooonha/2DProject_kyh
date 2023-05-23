@@ -23,8 +23,8 @@ public class Monster : MonoBehaviour
 
     bool isHitted = false;
     bool isAttack = false;
-    bool isLive = true;//몬스터가 살아있는지 죽었는지
-   
+    protected bool isLive=true;//몬스터가 살아있는지 죽었는지
+    public bool IsLive { get { return isLive; } set { isLive = value; } }
     float _timer;
     //public GameObject _excam;
     Rigidbody2D _rigid;
