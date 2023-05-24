@@ -4,7 +4,6 @@ using System.ComponentModel;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Monster : MonoBehaviour
 {
@@ -20,6 +19,7 @@ public class Monster : MonoBehaviour
     [SerializeField] Slider _slider;
     [SerializeField] GameObject _jail;
     [SerializeField] GameObject _AttackMode;
+    [SerializeField] MonsterController _mc;
 
     bool isHitted = false;
     bool isAttack = false;
@@ -30,6 +30,7 @@ public class Monster : MonoBehaviour
     Rigidbody2D _rigid;
     Animator _ani;
     SpriteRenderer _render;
+
 
     void Start()
     {
@@ -78,6 +79,7 @@ public class Monster : MonoBehaviour
         {
             _jail.SetActive(false);
             _AttackMode.SetActive(false);
+            _slider.value = 1;
         }
     }
     public void onHitted(int hitpower)
@@ -95,6 +97,7 @@ public class Monster : MonoBehaviour
     void Remove()
     {
         gameObject.SetActive(false);
+        //_mc.MakeMon();
 
     }
     void colorChange()
@@ -138,8 +141,16 @@ public class Monster : MonoBehaviour
     {
         _ani.SetBool("Attack", false);
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+   public void Init(MonsterController mc,Transform Player)
     {
-       
+        gameObject.SetActive(true);
+        _mc = mc;
+        _target = Player;
+        //다시 나타났을때 초기화
+        _hp = 10;
+        HpBar();
+        Vector3 ranPos = _target.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized*1.5f;
+        transform.position = ranPos;
+        isLive = true;
     }
 }

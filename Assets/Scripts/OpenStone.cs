@@ -11,7 +11,7 @@ public class OpenStone : MonoBehaviour
     void Awake()
     {
         _ani = GetComponent<Animator>();
-        isPlayerEnter = false;
+        
     }
   
     void Update()
@@ -19,23 +19,31 @@ public class OpenStone : MonoBehaviour
         if (isPlayerEnter == true)
         {
             _ani.SetTrigger("Open");
+            Invoke("Remove", 1f);
             makeMonster();
+            isPlayerEnter = false;
         }
 
     }
+    void Remove()
+    {
+        Destroy(gameObject);
+    }
 
-    void makeMonster()
+   public void makeMonster()
     {
         if (!isPlayerEnter) return;
         int ran = Random.Range(0, 10);
+        Debug.Log(ran+" is ran");
         if (ran<3)
         {
-            //Debug.Log("Not Monster");
+            Debug.Log("Not Monster");
             
         }
-        else if (ran<7)
+        else
         {
-          _moncon.SetActive(true);
+            _moncon.SetActive(true);
+            _moncon.GetComponent<MonsterController>().MakeMon();
             _hpBar.SetActive(true);
         }
 
