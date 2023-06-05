@@ -27,7 +27,7 @@ public class OpenStone : MonoBehaviour
     }
     void Remove()
     {
-        Destroy(gameObject);
+       gameObject.SetActive(false);
     }
 
    public void makeMonster()

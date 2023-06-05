@@ -96,8 +96,17 @@ public class GameManager : MonoBehaviour
     {
        // Application.Quit(); //게임종료
         SceneManager.LoadScene("Lobby");
+        PlayerPrefs.SetFloat("PlayerX", 5.97f);
+        PlayerPrefs.SetFloat("PlayerY", -1.8f);
+
     }
 
+    public void gameRetry()
+    {
+        SceneManager.LoadScene("Dungeon");
+       
+
+    }
     public void gameSave()
     {
         //quest id

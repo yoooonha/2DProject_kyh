@@ -17,7 +17,6 @@ public class Monster : MonoBehaviour
     [SerializeField] SpriteRenderer _img;
     [SerializeField] Animator _ani2;
     [SerializeField] Slider _slider;
-    [SerializeField] GameObject _jail;
     [SerializeField] GameObject _AttackMode;
     [SerializeField] MonsterController _mc;
 
@@ -72,12 +71,11 @@ public class Monster : MonoBehaviour
         transform.Translate((_target.position - transform.position).normalized * Time.deltaTime * _speed);
         _render.flipX = _target.position.x > transform.position.x;
     }
-    void HpBar()
+    public void HpBar()
     {
         _slider.value -= 0.1f;
         if(_slider.value == 0)
         {
-            _jail.SetActive(false);
             _AttackMode.SetActive(false);
             _slider.value = 1;
         }
@@ -149,7 +147,7 @@ public class Monster : MonoBehaviour
         //다시 나타났을때 초기화
         _hp = 10;
         HpBar();
-        Vector3 ranPos = _target.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized*1.5f;
+        Vector3 ranPos = _target.position + new Vector3(Random.Range(-1.2f, 1.2f), Random.Range(-1.2f, 1.2f)).normalized*1.5f;
         transform.position = ranPos;
         isLive = true;
     }

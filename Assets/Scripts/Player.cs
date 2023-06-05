@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -24,13 +25,32 @@ public class Player : MonoBehaviour
     public float _timer = 0f;
 
     OpenStone _openStone;
-    bool isGameOver = false;
+    protected bool isGameOver = false;
+    public bool IsGameOver { get { return isGameOver; } set { isGameOver = value; } }
     protected bool _bossRoom;
     public bool BossRoom { get { return _bossRoom; } set { _bossRoom = value; } }
     protected bool _bossClear;
     public bool BossClear { get { return _bossClear; } set { _bossClear = value; } }
     //현재 바라보고 있는 방향 값을 가진 변수가 필요
     Vector3 dirVec;
+
+    //singleton
+    public static Player _instance;
+    private void Awake()
+    {
+       
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(_instance);
+           
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
     public void HPBar()
     {
         _Hpbar.value -= 0.05f;
@@ -75,10 +95,17 @@ public class Player : MonoBehaviour
     {
         rigid = GetComponent<Rigidbody2D>();
         _ani = GetComponent<Animator>();
-        Vector2 v2 = new Vector2(PlayerPrefs.GetFloat("savePlayerX"), PlayerPrefs.GetFloat("savePlayerY"));
-        transform.position = v2;
         _bullet = Resources.Load("Prefabs/Bullet") as GameObject;
     }
+    bool sceneChange = true;
+    public void positionInit()
+    {
+        sceneChange = true;
+        //씬이 바뀔때마다 호출하여 초기화시켜준다
+        Vector2 v2 = new Vector2(PlayerPrefs.GetFloat("savePlayerX"), PlayerPrefs.GetFloat("savePlayerY"));
+        transform.position = v2;
+    }
+
     void Update()
     {
         _timer += Time.deltaTime;
@@ -114,7 +141,7 @@ public class Player : MonoBehaviour
     }
     public void move()
     {
-        if(isGameOver) { return; }
+        if(isGameOver==true) { return; }
         if (manager.isAction || manager._Action) return;
         Vector2 v2 = Vector2.zero;
 
@@ -170,40 +197,57 @@ public class Player : MonoBehaviour
 
 
     }
-    public void postionSet(float x,float y)
+
+    public void playerInit()
     {
-        x=transform.position.x; 
-        y=transform.position.y;
-        PlayerPrefs.SetFloat("playerX",transform.position.x);
-        PlayerPrefs.SetFloat("playerY",transform.position.y);
+        //죽었을때 다시 초기화 세팅
+        gameObject.SetActive(true);
+        isGameOver = false;
+        PlayerPrefs.SetFloat("PlayerX", 0.03f);
+        PlayerPrefs.SetFloat("PlayerY", -5.05f);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)
     {
+
         if (collision.gameObject.CompareTag("DungeonDoor"))
         {
             PlayerPrefs.SetFloat("savePlayerX", 0.03f);
             PlayerPrefs.SetFloat("savePlayerY", -5.05f);
+            sceneChange = false;
             SceneManager.LoadScene("Dungeon");
+            positionInit();
         }
         if (collision.gameObject.CompareTag("Border"))//Dungeon>>main
         {
             PlayerPrefs.SetFloat("savePlayerX", 2.56f);
             PlayerPrefs.SetFloat("savePlayerY", 1.36f);
+            sceneChange = false;
             SceneManager.LoadScene("Main");
+            positionInit();
+
+
         }
         if (collision.gameObject.CompareTag("Border1"))//house>>main
         {
             PlayerPrefs.SetFloat("savePlayerX", 11.64f);
             PlayerPrefs.SetFloat("savePlayerY", 0.26f);
+            sceneChange = false;
             SceneManager.LoadScene("Main");
+            positionInit();
+
+
 
         }
         if (collision.gameObject.CompareTag("HouseDoor1"))
         {
             PlayerPrefs.SetFloat("savePlayerX", 0.02f);
             PlayerPrefs.SetFloat("savePlayerY", -3.22f);
+            sceneChange = false;
             SceneManager.LoadScene("House1");
+            positionInit();
+
+
         }
     }
 
