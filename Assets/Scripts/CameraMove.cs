@@ -5,19 +5,23 @@ using UnityEngine;
 public class CameraMove : MonoBehaviour
 {
     [SerializeField] Transform _Cam;
-    [SerializeField] Player _Player;
+   
     public GameObject _bosRoom;
     public GameObject _bosClear;
-
+    Player _player;
+    private void Start()
+    {
+       _player= Player._instance.GetComponent<Player>();
+    }
     void Update()
     {
-        if (_Player.BossRoom == true)
+        if (_player.BossRoom == true)
         {
             _Cam.position = Vector3.Lerp(_Cam.position, new Vector3(0, 9.95f, -10), 0.007f);
             Invoke("objOff", 1f);
             
         }
-        if (_Player.BossClear == true)
+        if (_player.BossClear == true)
         {
             _Cam.position = Vector3.Lerp(_Cam.position, new Vector3(0, -0.28f, -10), 0.007f);
             StartCoroutine(OnOff(_bosRoom));

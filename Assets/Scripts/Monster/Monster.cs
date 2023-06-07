@@ -10,8 +10,12 @@ public class Monster : MonoBehaviour
     [SerializeField] float _speed;
     [SerializeField] int _hp;
     [SerializeField] int _attack;
-    [SerializeField] Player _player;
-    [SerializeField] Transform _target;//target
+    //player
+    //[SerializeField] Player _player;
+     Transform _target;//Player
+
+
+
     [SerializeField][Range(0f, 3f)] float contactDistance;
     [SerializeField] Zone _zone;
     [SerializeField] SpriteRenderer _img;
@@ -36,6 +40,8 @@ public class Monster : MonoBehaviour
         _rigid=GetComponent<Rigidbody2D>();
         _render = GetComponent<SpriteRenderer>();
         _ani= GetComponent<Animator>();
+
+        _target = Player._instance.transform;
     }
 
     void Update()
@@ -116,8 +122,8 @@ public class Monster : MonoBehaviour
     }
     public void Attack()//몬스터 공격 애니메이션 이벤트 함수
     {
-
-        _player.GetComponent<Player>().Hitted(5);
+        Player._instance.Hitted(10);
+        //_player.GetComponent<Player>().Hitted(10);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

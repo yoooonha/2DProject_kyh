@@ -3,10 +3,12 @@ using UnityEngine;
 public class MonsterController : MonoBehaviour
 {
     [SerializeField] GameObject[] _mon;
-    [SerializeField] Transform _player;
     [SerializeField] OpenStone _os;
-    public void Start()
+    Transform _player;
+    private void Start()
     {
+        _player = Player._instance.transform;
+        Player._instance._monCon = this;
     }
     public Transform getTargetMonster()
     {

@@ -12,10 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] float _hp;
     [SerializeField] int _attack;
     [SerializeField] Transform _player;
-    [SerializeField] GameObject _uiPanel;
+    //[SerializeField] GameObject _uiPanel;
     [SerializeField] GameManager manager;
-    [SerializeField] MonsterController _monCon;
-    [SerializeField] Slider _Hpbar;
+    
     Rigidbody2D rigid;
     Animator _ani;
     GameObject _border;
@@ -24,8 +23,10 @@ public class Player : MonoBehaviour
     Vector3 _dir;
     public float _timer = 0f;
 
-    OpenStone _openStone;
-    protected bool isGameOver = false;
+    public MonsterController _monCon { get; set;}
+    public Slider _Hpbar { get; set; }
+
+    protected bool isGameOver; 
     public bool IsGameOver { get { return isGameOver; } set { isGameOver = value; } }
     protected bool _bossRoom;
     public bool BossRoom { get { return _bossRoom; } set { _bossRoom = value; } }
@@ -53,7 +54,8 @@ public class Player : MonoBehaviour
 
     public void HPBar()
     {
-        _Hpbar.value -= 0.05f;
+       
+        _Hpbar.value -= 10f;
     }
 
     public void Attack()
@@ -87,8 +89,8 @@ public class Player : MonoBehaviour
             _Hpbar.value = 0;
             //Game over
             isGameOver = true;
-            _uiPanel.SetActive(true);
-            this.gameObject.SetActive(false);
+            gameObject.SetActive(false);
+            //_uiPanel.SetActive(true);
         }
     }
     void Start()
@@ -201,10 +203,22 @@ public class Player : MonoBehaviour
     public void playerInit()
     {
         //죽었을때 다시 초기화 세팅
-        gameObject.SetActive(true);
         isGameOver = false;
-        PlayerPrefs.SetFloat("PlayerX", 0.03f);
-        PlayerPrefs.SetFloat("PlayerY", -5.05f);
+        gameObject.SetActive(true);
+        PlayerPrefs.SetFloat("savePlayerX", 0.03f);
+        PlayerPrefs.SetFloat("savePlayerY", -5.05f);
+        _hp = 100;
+        HPBar();
+    }
+    public void playerExit()
+    {
+        //죽었을때 EXIT버튼 눌렀을 때 다시 초기화
+        isGameOver = false;
+        gameObject.SetActive(true);
+        PlayerPrefs.SetFloat("savePlayerX", 5.97f);
+        PlayerPrefs.SetFloat("savePlayerY", -1.8f);
+        _hp = 100;
+        HPBar();
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

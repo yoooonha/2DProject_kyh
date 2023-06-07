@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -96,16 +97,15 @@ public class GameManager : MonoBehaviour
     {
        // Application.Quit(); //게임종료
         SceneManager.LoadScene("Lobby");
-        PlayerPrefs.SetFloat("PlayerX", 5.97f);
-        PlayerPrefs.SetFloat("PlayerY", -1.8f);
-
+        Player._instance.playerExit();
     }
 
     public void gameRetry()
     {
         SceneManager.LoadScene("Dungeon");
-       
-
+        PlayerPrefs.SetFloat("PlayerX", 0.03f);
+        PlayerPrefs.SetFloat("PlayerY", -5.05f);
+        Player._instance.playerInit();
     }
     public void gameSave()
     {

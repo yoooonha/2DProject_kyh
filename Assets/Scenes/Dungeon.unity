@@ -386,7 +386,7 @@ Transform:
   m_Children:
   - {fileID: 619985292}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &186749345 stripped
 Transform:
@@ -4441,7 +4441,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: EIXT
+  m_Text: EXIT
 --- !u!222 &443075802
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6916,7 +6916,7 @@ Transform:
   - {fileID: 1410749367}
   - {fileID: 479224622}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &558146912
 MonoBehaviour:
@@ -6941,7 +6941,6 @@ MonoBehaviour:
   - {fileID: 1136991290}
   - {fileID: 2034972449}
   - {fileID: 1698831082}
-  _player: {fileID: 958762665}
   _os: {fileID: 721782702}
 --- !u!1 &575527120
 GameObject:
@@ -10292,6 +10291,54 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7740023190469742858, guid: a6957808528b4754ba8952527bee550c, type: 3}
   m_PrefabInstance: {fileID: 915780655}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1372803293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1372803295}
+  - component: {fileID: 1372803294}
+  m_Layer: 0
+  m_Name: UIBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1372803294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372803293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cb2977f507757c4db17f4a187d7fb94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hpBar: {fileID: 1406780316}
+  _gameOver: {fileID: 1833345811}
+--- !u!4 &1372803295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372803293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.080787, y: 1.6434036, z: -0.2551164}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1449736800}
+  - {fileID: 1833345815}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1406780315
 GameObject:
   m_ObjectHideFlags: 0
@@ -10302,6 +10349,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1406780317}
   - component: {fileID: 1406780316}
+  - component: {fileID: 1406780318}
   m_Layer: 5
   m_Name: HPBarSlider
   m_TagString: Untagged
@@ -10354,9 +10402,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 1
+  m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 100
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -10382,6 +10430,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 480}
   m_SizeDelta: {x: 1000, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1406780318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1406780315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086fd3a5f0986c440962cd68593a43cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1410749365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11737,8 +11797,8 @@ RectTransform:
   - {fileID: 133395625}
   - {fileID: 695533602}
   - {fileID: 2124483466}
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 1372803295}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11888,7 +11948,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1600677625 stripped
 MonoBehaviour:
@@ -12642,8 +12702,8 @@ RectTransform:
   - {fileID: 1521993111}
   - {fileID: 695036943}
   - {fileID: 238308413}
-  m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_Father: {fileID: 1372803295}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -13685,7 +13745,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5477114342871324534, guid: 6a64ad169b6690a4e9dffc1f84778ea4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5477114342871324534, guid: 6a64ad169b6690a4e9dffc1f84778ea4, type: 3}
       propertyPath: m_TagString
