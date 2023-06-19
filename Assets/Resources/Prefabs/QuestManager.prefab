@@ -47,4 +47,4 @@ MonoBehaviour:
   questId: 10
   questActionIndex: 1
   questObject:
-  - {fileID: 0}
+  - {fileID: 6818077850647175222, guid: 393f2e607ef100b4ea3325564f8a369d, type: 3}

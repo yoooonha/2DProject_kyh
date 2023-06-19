@@ -217,6 +217,7 @@ public class Player : MonoBehaviour
         gameObject.SetActive(true);
         PlayerPrefs.SetFloat("savePlayerX", 5.97f);
         PlayerPrefs.SetFloat("savePlayerY", -1.8f);
+       
         _hp = 100;
         HPBar();
     }

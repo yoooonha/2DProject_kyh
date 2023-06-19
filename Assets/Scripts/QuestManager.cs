@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -58,7 +57,7 @@ public class QuestManager : MonoBehaviour
                     questObject[0].SetActive(true);
                 break;
             case 20:
-                if (questActionIndex == 1) //ring ¸Ô¾úÀ»¶§
+                if (questActionIndex == 1 ) //ring ¸Ô¾úÀ»¶§
                     questObject[0].SetActive(false);
                 //Destroy(questObject[0]);
                 break;

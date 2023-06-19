@@ -7,8 +7,10 @@ public class Stones : MonoBehaviour
 {
     [SerializeField] GameObject[] _stones;
     [SerializeField] GameObject _jail;
+    [SerializeField] GameObject _locked;
     [SerializeField] GameObject attackMode;
     [SerializeField] GameObject[] _mons;
+
 
     private void Update()
     {
@@ -38,6 +40,7 @@ public class Stones : MonoBehaviour
         if (isallOff == false) return;
         //문을 열어줍니다.
         _jail.SetActive(false);
+        _locked.SetActive(false);
     }
 }
 

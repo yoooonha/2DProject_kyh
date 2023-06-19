@@ -4,6 +4,10 @@ using UnityEngine.SceneManagement;
 
 public class LobbyMove : MonoBehaviour
 {
+    private void Start()
+    {
+        //PlayerPrefs.DeleteAll();
+    }
     public void OnButtonGamePlay()
     {
         PlayerPrefs.SetFloat("savePlayerX", 5.97f);

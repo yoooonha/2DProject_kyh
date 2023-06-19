@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -95,9 +92,12 @@ public class GameManager : MonoBehaviour
 
     public void gameExit()
     {
-       // Application.Quit(); //게임종료
-        SceneManager.LoadScene("Lobby");
+        // Application.Quit(); //게임종료
         Player._instance.playerExit();
+        SceneManager.LoadScene("Lobby");
+        Player._instance.positionInit();
+
+      
     }
 
     public void gameRetry()
@@ -133,9 +133,9 @@ public class GameManager : MonoBehaviour
         int questActionIndex = PlayerPrefs.GetInt("QuestActionIndex");
 
         _player.transform.position = new Vector3(x, y, 0);
-        questManager.questId = questId;
-        questManager.questActionIndex = questActionIndex;
-        questManager.ControlObject();
+        //questManager.questId = questId;
+        //questManager.questActionIndex = questActionIndex;
+        //questManager.ControlObject();
 
     }
 }

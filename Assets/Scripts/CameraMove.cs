@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraMove : MonoBehaviour
@@ -17,13 +16,13 @@ public class CameraMove : MonoBehaviour
     {
         if (_player.BossRoom == true)
         {
-            _Cam.position = Vector3.Lerp(_Cam.position, new Vector3(0, 9.95f, -10), 0.007f);
+            _Cam.position = Vector3.Lerp(_Cam.position, new Vector3(0, 9.95f, -10), 10f*Time.deltaTime);
             Invoke("objOff", 1f);
             
         }
         if (_player.BossClear == true)
         {
-            _Cam.position = Vector3.Lerp(_Cam.position, new Vector3(0, -0.28f, -10), 0.007f);
+            _Cam.position = Vector3.Lerp(_Cam.position, new Vector3(0, -0.28f, -10), 10f * Time.deltaTime);
             StartCoroutine(OnOff(_bosRoom));
         }
 

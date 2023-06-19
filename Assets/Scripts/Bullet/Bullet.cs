@@ -25,6 +25,7 @@ public class Bullet : MonoBehaviour
     {
         //대상위치 - 내위치
         transform.Translate(_dir* Time.deltaTime * _speed);
+        //타겟방향으로 rotation z축이 돌아감 
         _render.flipX= _target.position.x < transform.position.x;
        
     }
