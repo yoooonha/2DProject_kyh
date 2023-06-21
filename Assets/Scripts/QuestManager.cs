@@ -59,6 +59,7 @@ public class QuestManager : MonoBehaviour
             case 20:
                 if (questActionIndex == 1 ) //ring ¸Ô¾úÀ»¶§
                     questObject[0].SetActive(false);
+                SoundController.instance.SFXPlay(SoundController.sfx.GetItem);
                 //Destroy(questObject[0]);
                 break;
         }

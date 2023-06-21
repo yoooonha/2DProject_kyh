@@ -24,9 +24,12 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         //대상위치 - 내위치
-        transform.Translate(_dir* Time.deltaTime * _speed);
+        float angle = Vector2.SignedAngle(Vector2.right, _dir);
+        Debug.Log("총알이 날아가는 각도" + angle);
+        transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
+        transform.Translate(_dir* Time.deltaTime * _speed, Space.World);
         //타겟방향으로 rotation z축이 돌아감 
-        _render.flipX= _target.position.x < transform.position.x;
+        //_render.flipX= _target.position.x < transform.position.x;
        
     }
 }

@@ -94,6 +94,7 @@ public class Monster : MonoBehaviour
         {
             isLive = false;
             HpBar();
+            SoundController.instance.SFXPlay(SoundController.sfx.SlimeDeath);
             _ani.SetTrigger("Dead");
             Invoke("Remove", 1f);
         }
@@ -123,6 +124,7 @@ public class Monster : MonoBehaviour
     public void Attack()//몬스터 공격 애니메이션 이벤트 함수
     {
         Player._instance.Hitted(10);
+        SoundController.instance.SFXPlay(SoundController.sfx.SlimeAttack);
         //_player.GetComponent<Player>().Hitted(10);
     }
 

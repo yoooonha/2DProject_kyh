@@ -65,7 +65,8 @@ public class Player : MonoBehaviour
         {
             if (_timer > 0.2f)
             {
-            Transform target = _monCon.getTargetMonster();
+                SoundController.instance.SFXPlay(SoundController.sfx.Attack);
+                Transform target = _monCon.getTargetMonster();
             if (target == null) return;
             GameObject temp = Instantiate(_bullet);
             Vector3 dir = (target.transform.position - transform.position).normalized;//nomalized 크기를 1로 바꿈
@@ -89,6 +90,8 @@ public class Player : MonoBehaviour
             _Hpbar.value = 0;
             //Game over
             isGameOver = true;
+            SoundController.instance.bgmStop();
+            SoundController.instance.SFXPlay(SoundController.sfx.GameOver);
             gameObject.SetActive(false);
             //_uiPanel.SetActive(true);
         }
@@ -144,7 +147,7 @@ public class Player : MonoBehaviour
     public void move()
     {
         if(isGameOver==true) { return; }
-        if (manager.isAction || manager._Action) return;
+        if (manager.isAction || manager._Action==true) return;
         Vector2 v2 = Vector2.zero;
 
         if (Input.GetKey(KeyCode.RightArrow))

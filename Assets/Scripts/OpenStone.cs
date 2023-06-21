@@ -19,6 +19,7 @@ public class OpenStone : MonoBehaviour
         if (isPlayerEnter == true)
         {
             _ani.SetTrigger("Open");
+            SoundController.instance.SFXPlay(SoundController.sfx.StoneOpen);
             Invoke("Remove", 1f);
             makeMonster();
             isPlayerEnter = false;
@@ -27,7 +28,7 @@ public class OpenStone : MonoBehaviour
     }
     void Remove()
     {
-       gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 
    public void makeMonster()
