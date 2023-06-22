@@ -267,6 +267,12 @@ public class Player : MonoBehaviour
 
 
         }
+        if (collision.gameObject.GetComponent<Damage>() != null)
+        {
+            int damage = collision.gameObject.GetComponent<Damage>().getDamage();
+            collision.gameObject.GetComponent<BulletRemove>().Remove();
+            Hitted(damage);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
