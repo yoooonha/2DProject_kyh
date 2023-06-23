@@ -59,7 +59,7 @@ public class TalkManager : MonoBehaviour
         talkData.Add(20 + 2000, new string[] { "찾으면 꼭 좀 가져다 줘.:1", });
         talkData.Add(20 + 5000, new string[] { "근처에 반지를 찾았다." });
 
-        talkData.Add(21 + 2000, new string[] { "엇 찾아줘서 고마워.:1" });
+        talkData.Add(21 + 2000, new string[] { "앗 찾아줘서 고마워.:1" });
         
     }
     public Sprite GetPortrait(int id,int portraitIndex)
