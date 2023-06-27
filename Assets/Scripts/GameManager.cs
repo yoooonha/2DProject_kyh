@@ -88,10 +88,14 @@ public class GameManager : MonoBehaviour
         talkIndex++; //다음문장으로 넘어감
 
     }
+    public void optionExit()
+    {
+         Application.Quit(); //게임종료
+
+    }
 
     public void gameExit()
     {
-        // Application.Quit(); //게임종료
         SoundController.instance.SFXPlay(SoundController.sfx.Click);
         Player._instance.playerExit();
         SceneManager.LoadScene("Lobby");
@@ -100,14 +104,15 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void gameRetry()
+    public void dungeonRetry()
     {
         SoundController.instance.SFXPlay(SoundController.sfx.Click);
         SceneManager.LoadScene("Dungeon");
-        PlayerPrefs.SetFloat("PlayerX", 0.03f);
-        PlayerPrefs.SetFloat("PlayerY", -5.05f);
+        PlayerPrefs.SetFloat("PlayerXX", 0.03f);
+        PlayerPrefs.SetFloat("PlayerYY", -5.05f);
         Player._instance.playerInit();
     }
+   
     public void gameSave()
     {
         //quest id

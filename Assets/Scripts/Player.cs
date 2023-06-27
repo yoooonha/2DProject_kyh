@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -57,6 +53,7 @@ public class Player : MonoBehaviour
        
         _Hpbar.value -= 10f;
     }
+    Witch witch;
 
     public void Attack()
     {
@@ -67,14 +64,19 @@ public class Player : MonoBehaviour
             {
                 SoundController.instance.SFXPlay(SoundController.sfx.Attack);
                 Transform target = _monCon.getTargetMonster();
-            if (target == null) return;
-            GameObject temp = Instantiate(_bullet);
-            Vector3 dir = (target.transform.position - transform.position).normalized;//nomalized 크기를 1로 바꿈
-            temp.transform.position = transform.position + dir;
-            //내위치+나로부터 적까지 방향
-            temp.name = "Bullet";
-            temp.GetComponent<Bullet>().Init(target);
-            _timer = 0f;
+                GameObject witch = GameObject.Find("Witch");
+                if (target == null && witch != null && Vector3.Distance(transform.position, witch.transform.position) < 4.5f)
+                {
+                    target = GameObject.Find("Witch").transform;
+                }
+                if (target == null) return;
+                GameObject temp = Instantiate(_bullet);
+                Vector3 dir = (target.transform.position - transform.position).normalized;//nomalized 크기를 1로 바꿈
+                temp.transform.position = transform.position + dir;
+                //내위치+나로부터 적까지 방향
+                temp.name = "Bullet";
+                temp.GetComponent<Bullet>().Init(target);
+                _timer = 0f;
             }
         }
     }
@@ -223,6 +225,11 @@ public class Player : MonoBehaviour
        
         _hp = 100;
         HPBar();
+    }
+    public void Clear()
+    {
+        // ring 만드는 퀘스트 정보 전달
+        //manager.Action
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

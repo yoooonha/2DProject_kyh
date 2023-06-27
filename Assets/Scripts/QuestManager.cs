@@ -7,6 +7,7 @@ public class QuestManager : MonoBehaviour
     public int questActionIndex; //퀘스트 대화순서 변수 
     public GameObject[] questObject;
     Dictionary<int, QuestData> questList; //퀘스트 데이터를 저장할 Dictionary 변수 생성
+    Witch witch;
         void Awake()
     {
         //int key에 QuestData값을 저장하는 Dictionary 함수
@@ -59,9 +60,10 @@ public class QuestManager : MonoBehaviour
             case 20:
                 if (questActionIndex == 1 ) //ring 먹었을때
                     questObject[0].SetActive(false);
-                SoundController.instance.SFXPlay(SoundController.sfx.GetItem);
+                //SoundController.instance.SFXPlay(SoundController.sfx.GetItem);
                 //Destroy(questObject[0]);
                 break;
+            
         }
     }
 

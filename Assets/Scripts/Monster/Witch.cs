@@ -21,8 +21,11 @@ public class Witch : MonoBehaviour
     [SerializeField] int _hp;
     [SerializeField] float _speed;
     [SerializeField] GameObject _bossBullet;
+    [SerializeField] GameObject _AttackMode;
     [SerializeField] Slider _slider;
+    [SerializeField] GameObject _ring;
     Coroutine _routin;
+    float _timer;
 
     public EBossState _estate = EBossState.Idle;
     void Start()
@@ -31,7 +34,7 @@ public class Witch : MonoBehaviour
         _player = Player._instance.transform;
         _render = GetComponent<SpriteRenderer>();
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Boss"), LayerMask.NameToLayer("BossBullet"));
-
+        _hpMax = _hp;
     }
 
 
@@ -46,7 +49,12 @@ public class Witch : MonoBehaviour
             case EBossState.Attack:
                 Attack();
                 break;
+            //case EBossState.Die:
+            //    break;
+
         }
+
+        colorChange();
 
     }
     void Attack()
@@ -84,7 +92,7 @@ public class Witch : MonoBehaviour
         // 거리가 3이상일때만 move
         // 이하가 되는순간 attack
         float angle = Vector2.SignedAngle(Vector2.right, (_player.position - transform.position).normalized);
-        Debug.Log("마녀가 플레이어를 바라보는 각도 " + angle);
+       //Debug.Log("마녀가 플레이어를 바라보는 각도 " + angle);
         if (Vector2.Distance(transform.position, _player.position) > 15)
         {
             //Debug.Log("거리가 "+Vector2.Distance(transform.position, _player.position));
@@ -123,21 +131,59 @@ public class Witch : MonoBehaviour
 
     public void BossHpBar()
     {
-        _slider.value -= 2;
-
-        if (_slider.value == 0)
+        _slider.value = _hp;
+        Debug.Log("hp bar : "+(_hp / (float)_hpMax));
+        if (_slider.value <= 0)
         {
+            _AttackMode.SetActive(false);
+            _slider.value = 1;
         }
     }
     public void OnHitted(int dmg)
     {
         _hp -= dmg;
         _isHitted = true;
-        if (_hp == 0)
+        BossHpBar();
+        if (_hp <= 0)
         {
             _estate = EBossState.Die;
+            _ani.Play("Die");
+            Invoke("Remove", 2f);
+            
+        }
+    }
+    void Remove()
+    {
+        Destroy(gameObject);
+        _AttackMode.SetActive(false);
 
+
+    }
+    void colorChange()
+    {
+        if (_isHitted == true)
+        {
+            _timer += Time.deltaTime;
+            _render.color = Color.red;
+            if (_timer > 0.5f)
+            {
+                //초기화
+                _isHitted = false;
+                _render.color = Color.white;
+                _timer = 0f;
+            }
         }
 
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<Damage>() != null)
+        {
+            int damage = collision.gameObject.GetComponent<Damage>().getDamage();
+            collision.gameObject.GetComponent<BulletRemove>().Remove();
+            OnHitted(damage);
+        }
+    }
+
 }

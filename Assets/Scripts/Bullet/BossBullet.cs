@@ -18,7 +18,7 @@ public class BossBullet : MonoBehaviour
     void Update()
     {
         float angle=Vector2.SignedAngle(Vector2.right, _dir);
-        Debug.Log("플레이어 바라보는 각도 "+angle);
+        //Debug.Log("플레이어 바라보는 각도 "+angle);
         //Down
         //-45~-135도
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));

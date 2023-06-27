@@ -7886,7 +7886,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.2909081
+      m_AnimationSpeed: 1.8693861
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 8, y: -6, z: 0}
@@ -7894,7 +7894,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.5864317
+      m_AnimationSpeed: 1.1080251
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -4, y: -4, z: 0}
@@ -7902,7 +7902,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.3730106
+      m_AnimationSpeed: 1.2119166
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -4, y: -3, z: 0}
@@ -7910,7 +7910,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.3274505
+      m_AnimationSpeed: 1.670244
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 8, y: -2, z: 0}
@@ -7918,7 +7918,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.3030674
+      m_AnimationSpeed: 1.1012824
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -2, y: 3, z: 0}
@@ -7926,7 +7926,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.0862112
+      m_AnimationSpeed: 1.9727616
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -1, y: 3, z: 0}
@@ -7934,7 +7934,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.0513829
+      m_AnimationSpeed: 1.9416817
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: 0, y: 3, z: 0}
@@ -7942,7 +7942,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 555935839, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
       - {fileID: 997626175, guid: d8c69ae4d72ce6342af01a31a998aa96, type: 3}
-      m_AnimationSpeed: 1.7749748
+      m_AnimationSpeed: 1.6030333
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   m_TileAssetArray:
@@ -9666,6 +9666,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 633790495}
+    - target: {fileID: 907073369841547467, guid: 9a1ca183f4c29514290045cfe4dcc26b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: optionExit
+      objectReference: {fileID: 0}
     - target: {fileID: 907073369899114786, guid: 9a1ca183f4c29514290045cfe4dcc26b, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -9893,7 +9897,15 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1697124961909070124, guid: 6b20268d1f1a32548acdc461fe1e09ef, type: 3}
+      propertyPath: questObject.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697124961909070124, guid: 6b20268d1f1a32548acdc461fe1e09ef, type: 3}
       propertyPath: questObject.Array.data[0]
+      value: 
+      objectReference: {fileID: 1697124962980638903}
+    - target: {fileID: 1697124961909070124, guid: 6b20268d1f1a32548acdc461fe1e09ef, type: 3}
+      propertyPath: questObject.Array.data[1]
       value: 
       objectReference: {fileID: 1697124962980638903}
     - target: {fileID: 1697124962200117854, guid: 6b20268d1f1a32548acdc461fe1e09ef, type: 3}

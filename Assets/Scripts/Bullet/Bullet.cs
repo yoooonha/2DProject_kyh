@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
     {
         //대상위치 - 내위치
         float angle = Vector2.SignedAngle(Vector2.right, _dir);//각도를 알려줌 45~135도 사이 up && -45~-135도 Down check
-        Debug.Log("총알이 날아가는 각도" + angle);
+        //Debug.Log("총알이 날아가는 각도" + angle);
         transform.rotation = Quaternion.Euler(new Vector3(0,0,angle));
         transform.Translate(_dir* Time.deltaTime * _speed, Space.World);
         //타겟방향으로 rotation z축이 돌아감 
